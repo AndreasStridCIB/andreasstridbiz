@@ -36,6 +36,9 @@ const theme = createTheme({
       darkBrown: DARK_BROWN,
     },
   },
+  typography: {
+    fontFamily: '"Sarpanch", serif',
+  },
 });
 
 // styled component extend div

@@ -1,28 +1,27 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CatInBoxLogoBlack from "./assets/logos/CatInBox_Logo_Black.webp";
-
-const LazyLoadImage = lazy(() => import("./globalComponents/LazyLoadImage"));
+import LazyImageWrap from "globalComponents/LazyImageWrap";
+import { GlobalContext } from "./GlobalContext";
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/catinbox");
-  };
+  const { navigateToUrl } = useContext(GlobalContext);
 
   return (
     <div style={{ backgroundColor: "lightblue", height: "100vh" }}>
       <h1>Home Page</h1>
-      <Suspense fallback={<p> Loading.... </p>}>
-        <LazyLoadImage
-          src={CatInBoxLogoBlack}
-          width={128}
-          height={168}
-          alt="Cat In Box Logo"
-          onClick={handleClick}
-        />
-      </Suspense>
+
+      <LazyImageWrap
+        imageComp={
+          <img
+            src={CatInBoxLogoBlack}
+            width={128}
+            height={168}
+            onClick={() => navigateToUrl("catinbox")}
+            alt="Temp"
+          />
+        }
+      />
     </div>
   );
 };
