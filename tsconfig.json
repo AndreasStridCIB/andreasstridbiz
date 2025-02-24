@@ -1,7 +1,17 @@
 {
   "files": [],
+  "composite": true,
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "globalComponents/*": ["globalComponents/*"],
+      "assets/*": ["assets/*"],
+      "modules/*": ["modules/*"]
+    }
+  },
+  "include": ["src"]
 }

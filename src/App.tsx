@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import { lazy, Suspense } from "react";
 
-const CatInBoxPage = lazy(() => import("./CatInBox/CatInBoxPage"));
+const CatInBoxPage = lazy(() => import("./modules/CatInBox/CatInBoxPage"));
 
 function App() {
   return (
