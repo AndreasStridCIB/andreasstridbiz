@@ -1,3 +1,14 @@
+/* Desktop
+1920×1080   (22.18%)
+1366×768      (14.04%)
+1440×900      (6.41%)
+1280×720       (5.45%)
+1280×1024    (4.52%) */
+/* 1650 x 1050 (desktop) :horizontal
+768 x 1024 (tablet) :vertical
+1024 x 768 (tablet) :horizontal
+420 x 320 (mobile) :vertical
+320 x 420 (mobile) :horizontal */
 html,
 body {
   margin: 0;

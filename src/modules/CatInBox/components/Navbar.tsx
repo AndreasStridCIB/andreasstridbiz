@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   const { navigateInPage } = useContext(GlobalContext);
 
   return (
-    <StyledAppBar>
+    <StyledAppBar id="navbar">
       <LazyImageWrap
         imageComp={
           <img

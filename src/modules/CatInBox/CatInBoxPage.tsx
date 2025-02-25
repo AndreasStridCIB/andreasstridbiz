@@ -3,6 +3,8 @@ import React from "react";
 import { BLACK, DARK_BROWN, ORANGE, WHITE } from "./utils/constants";
 import "./fonts.css";
 import Navbar from "./components/Navbar";
+import AndreasSection from "./components/AndreasSection";
+import DesignSection from "./components/DesignSection";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -46,9 +48,10 @@ const CatInBoxPageGrid = styled("div")`
   display: grid;
   background-color: ${DARK_BROWN};
   grid-template-areas:
-    "navbar navbar"
-    "design design";
-  height: 100vh;
+    "navbar"
+    "andreas"
+    "design";
+  height: 100%;
   width: 100vw;
 `;
 
@@ -58,6 +61,8 @@ const CatInBoxPage: React.FC = () => {
       <CssBaseline />
       <CatInBoxPageGrid>
         <Navbar />
+        <AndreasSection />
+        <DesignSection />
       </CatInBoxPageGrid>
     </ThemeProvider>
   );
