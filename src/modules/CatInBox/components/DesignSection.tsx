@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import {
   BLACK,
   SECTION_CLOSE_HEIGHT,
   SECTION_OPEN_HEIGHT,
 } from "../utils/constants";
 import SectionMenu from "./SectionMenu";
-import ImageSlider from "./ImageSlider";
 import { KeyBoardArrowIconWithBackgroundAbsolute } from "../../../globalComponents/KeyBoardArrowIcon";
+import ImageSliderContainer from "./ImageSliderContainer";
 
-const SectionDiv = styled("div")<{ isOpen: boolean }>(({ theme, isOpen }) => ({
+const SectionDiv = styled(Box)<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   display: "grid",
   gridArea: "design",
   marginTop: theme.spacing(8),
@@ -17,22 +17,22 @@ const SectionDiv = styled("div")<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   backgroundColor: BLACK,
   gridGap: theme.spacing(2),
   height: isOpen ? SECTION_OPEN_HEIGHT : SECTION_CLOSE_HEIGHT,
-  position: "relative",
   transition: "height 0.3s ease-in-out",
+  overflow: "visible",
   "& > *": {
     margin: theme.spacing(4), // Apply margin to all direct children
   },
 }));
 
 const DesignSection: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleSection = () => {
     setIsOpen(!isOpen);
   };
   return (
     <SectionDiv id="design" isOpen={isOpen}>
-      <ImageSlider />
+      <ImageSliderContainer />
       <SectionMenu />
       <KeyBoardArrowIconWithBackgroundAbsolute
         isOpen={isOpen}

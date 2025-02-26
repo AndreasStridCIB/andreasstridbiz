@@ -1,10 +1,10 @@
 import React from "react";
-import { styled, Typography } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import { BLACK, SEMI_BOLD } from "../utils/constants";
 import LazyImageWrap from "../../../globalComponents/LazyImage";
 import ProfileImg from "assets/photo/Profile.webp";
 
-const SectionDiv = styled("div")(({ theme }) => ({
+const SectionDiv = styled(Box)(({ theme }) => ({
   display: "grid",
   gridArea: "andreas",
   marginTop: theme.spacing(8),
@@ -17,7 +17,7 @@ const SectionDiv = styled("div")(({ theme }) => ({
   },
 }));
 
-const ImageContainer = styled("div")({
+const ImageContainer = styled(Box)({
   height: 900,
   width: 800,
   alignSelf: "center",
@@ -40,8 +40,8 @@ const AndreasSection: React.FC = () => {
       <ImageContainer>
         <LazyImageWrap imageComp={<ProfileImage src={ProfileImg} />} />
       </ImageContainer>
-      <div>
-        <Typography style={{ fontWeight: SEMI_BOLD }} variant="h2">
+      <Box>
+        <Typography sx={{ fontWeight: SEMI_BOLD }} variant="h2">
           {" "}
           Andreas Strid
         </Typography>
@@ -67,7 +67,7 @@ const AndreasSection: React.FC = () => {
           fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
           sunt in culpa qui officia deserunt mollit anim id est laborum
         </Typography>
-      </div>
+      </Box>
     </SectionDiv>
   );
 };

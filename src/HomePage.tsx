@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import CatInBoxLogoBlack from "./assets/logos/CatInBox_Logo_Black.webp";
 import LazyImageWrap from "globalComponents/LazyImageWrap";
 import { GlobalContext } from "./GlobalContext";
+import { Box } from "@mui/material";
 
 const HomePage: React.FC = () => {
   const { navigateToUrl } = useContext(GlobalContext);
 
   return (
-    <div style={{ backgroundColor: "lightblue", height: "100vh" }}>
+    <Box style={{ backgroundColor: "lightblue", height: "100vh" }}>
       <h1>Home Page</h1>
 
       <LazyImageWrap
@@ -22,7 +23,7 @@ const HomePage: React.FC = () => {
           />
         }
       />
-    </div>
+    </Box>
   );
 };
 

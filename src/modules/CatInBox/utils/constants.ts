@@ -11,7 +11,7 @@ export const SEMI_BOLD = 600;
 export const MEDIUM = 500;
 
 // Spacing
-export const NAVBAR_HEIGHT = "100px";
+export const NAVBAR_HEIGHT = 100;
 
-export const SECTION_CLOSE_HEIGHT = "300px";
+export const SECTION_CLOSE_HEIGHT = "400px";
 export const SECTION_OPEN_HEIGHT = "1000px";

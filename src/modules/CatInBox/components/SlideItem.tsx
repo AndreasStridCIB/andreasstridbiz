@@ -1,9 +1,11 @@
-import React from "react";
-import { keyframes, styled } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, keyframes, styled } from "@mui/material";
 import LazyImageWrap from "../../../globalComponents/LazyImage";
+import HoverImageZoom from "./HoveringImageZoom";
+import { getImageName } from "../../../utils/functions";
 
 const DELAY_INDEX = 4;
-const Slide_Width = 282 * 2;
+const Slide_Width = 282 * 3;
 
 const sliding = () => keyframes`
    0% {
@@ -24,10 +26,11 @@ const sliding = () => keyframes`
     transform: translateX(-${Slide_Width}px) translateY(0px);
   }
 `;
-const SlideItemContainer = styled("div")<{
+const SlideItemContainer = styled(Box)<{
   quantity: number;
   delay: number;
-}>(({ quantity, delay }) => ({
+  isHovered: boolean;
+}>(({ quantity, delay, isHovered }) => ({
   display: "grid",
   height: "inherit",
   justifyItems: "center",
@@ -36,6 +39,8 @@ const SlideItemContainer = styled("div")<{
   animationDelay: `${delay * DELAY_INDEX}s`,
   position: "absolute",
   opacity: 0, // Initially hidden
+  overflow: "visible",
+  animationPlayState: isHovered ? "paused" : "running",
 }));
 
 const Image = styled("img")({
@@ -45,23 +50,60 @@ const Image = styled("img")({
   objectFit: "cover",
   marginLeft: 16,
   marginRight: 16,
-  zIndex: 999,
+  overflow: "visible",
 });
 
 interface SlideItemProps {
   index: number;
   totalImageNbr: number;
-  image: any;
+  isHovered: boolean;
+  setHoveredImage: (image: string | null) => void;
+  image: string;
 }
 
 const SlideItem: React.FC<SlideItemProps> = ({
   index,
   totalImageNbr,
   image,
+  isHovered,
+  setHoveredImage,
 }) => {
-  console.log("SlideItem", index, totalImageNbr, image);
+  const [isInside, setIsInside] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isInside) {
+      interval = setInterval(() => {
+        console.log("Mouse is still inside!");
+        console.log("isHovered", isHovered);
+        if (isHovered) {
+          setHoveredImage(image);
+        }
+      });
+    } else {
+      if (interval) clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isInside, isHovered]); // Runs effect whenever `isInside` changes
+
+  const handleMouseEnter = () => {
+    setIsInside(true);
+  };
+
   return (
-    <SlideItemContainer key={index} quantity={totalImageNbr} delay={index}>
+    <SlideItemContainer
+      id={`slideitem-${getImageName(image)}`}
+      key={index}
+      quantity={totalImageNbr}
+      delay={index}
+      isHovered={isHovered}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setIsInside(false)}
+    >
       <LazyImageWrap key={index} imageComp={<Image src={image} />} />
     </SlideItemContainer>
   );

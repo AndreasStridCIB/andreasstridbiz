@@ -1,4 +1,10 @@
-import { createTheme, CssBaseline, styled, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  createTheme,
+  CssBaseline,
+  styled,
+  ThemeProvider,
+} from "@mui/material";
 import React from "react";
 import { BLACK, DARK_BROWN, ORANGE, WHITE } from "./utils/constants";
 import "./fonts.css";
@@ -44,7 +50,7 @@ const theme = createTheme({
 });
 
 // styled component extend div
-const CatInBoxPageGrid = styled("div")`
+const CatInBoxPageGrid = styled(Box)`
   display: grid;
   background-color: ${DARK_BROWN};
   grid-template-areas:
