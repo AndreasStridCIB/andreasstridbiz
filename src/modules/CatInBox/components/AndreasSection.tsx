@@ -11,6 +11,7 @@ const SectionDiv = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "repeat(2, 1fr)",
   backgroundColor: BLACK,
   gridGap: theme.spacing(2),
+  overflow: "hidden",
   height: 1000,
   "& > *": {
     margin: theme.spacing(4), // Apply margin to all direct children
@@ -18,17 +19,18 @@ const SectionDiv = styled(Box)(({ theme }) => ({
 }));
 
 const ImageContainer = styled(Box)({
-  height: 900,
-  width: 800,
-  alignSelf: "center",
+  width: "min(50vw, 100%)",
+  maxHeight: "900px",
+  maxWidth: "900px",
+
   overflow: "hidden",
 });
 
 const ProfileImage = styled("img")({
   transition: "transform 0.3s ease-in-out",
-  width: "1050px",
+  width: "inherit",
   objectFit: "contain",
-  objectPosition: "-150px -100px",
+  //objectPosition: "-50px -100px",
   //   "&:hover": {
   //     transform: "scale(1.2)", // Adjust the scale value as needed
   //   },

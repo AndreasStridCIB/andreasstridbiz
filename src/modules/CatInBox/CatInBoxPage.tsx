@@ -58,7 +58,7 @@ const CatInBoxPageGrid = styled(Box)`
     "andreas"
     "design";
   height: 100%;
-  width: 100vw;
+  width: 100%;
 `;
 
 const CatInBoxPage: React.FC = () => {

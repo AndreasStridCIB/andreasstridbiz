@@ -1,26 +1,21 @@
 import { Box, keyframes, styled } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import LazyImageWrap from "../../../globalComponents/LazyImageWrap";
-import { getImageName } from "../../../utils/functions";
-import { NAVBAR_HEIGHT } from "../utils/constants";
+import { getImageName } from "../../utils/functions";
+import LazyImageWrap from "../LazyImage";
 
-// top: isClosing: ${top}px;
-// left:${left}px;
-//  top: 50%;
-//     left: 50%;
+// fix
+// 1APA image that have not started yet should not show uptime.
+// 2APA The hovered image should pop up center of screen
 
-const openAnimation = (
-  isClosing: boolean,
-  top: number,
-  left: number
-) => keyframes`
+const openAnimation = (isClosing: boolean) => keyframes`
     0% {
         transform: translate(-50%, -50%) scale(${isClosing ? 1 : 0});
+        opacity: ${isClosing ? 1 : 0};
       
     }
     100% {
         transform: translate(-50%, -50%) scale(${isClosing ? 0 : 1});
-   
+        opacity: ${isClosing ? 0 : 1};
     }
 `;
 
@@ -37,10 +32,6 @@ const ModalOverlay = styled(Box)<{
   isClosing: boolean;
 }>(({ top, left, isClosing }) => ({
   position: "fixed",
-  //   top: !isClosing ? `${top}px` : "50%",
-  //   left: !isClosing ? `${left}px` : "50%",
-  //   top: "50%",
-  //   left: "50%",
   top: top,
   left: left,
   width: "900px",
@@ -52,7 +43,7 @@ const ModalOverlay = styled(Box)<{
   alignItems: "center",
   zIndex: 1000,
   transform: "translate(-50%, -50%)",
-  animation: `${openAnimation(isClosing)} 1s linear`,
+  animation: `${openAnimation(isClosing)} 0.66s ease-in-out`,
 }));
 
 interface HoverImageZoomProps {
@@ -66,6 +57,7 @@ const HoverImageZoom: React.FC<HoverImageZoomProps> = ({
 }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const [isClosing, setIsClosing] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (image) {
@@ -82,26 +74,28 @@ const HoverImageZoom: React.FC<HoverImageZoomProps> = ({
     }
   }, [image, isClosing]);
 
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      setHoveredImage(null);
       setIsClosing(false);
-    }, 1000); // Match the duration of the close animation
+      setHoveredImage(null);
+    }, 500); // Match the duration of the close animation
   };
-
-  console.log(
-    "HoverImageZoom.tsx: modalPosition:",
-    modalPosition,
-    image,
-    image !== null
-  );
 
   return (
     <>
       {/* Modal - show when there is an active image */}
       {image && (
         <ModalOverlay
+          sx={{}}
           id="HoverImageZoom"
           top={modalPosition.top}
           left={modalPosition.left}

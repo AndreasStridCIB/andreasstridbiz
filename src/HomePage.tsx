@@ -5,11 +5,18 @@ import LazyImageWrap from "globalComponents/LazyImageWrap";
 import { GlobalContext } from "./GlobalContext";
 import { Box } from "@mui/material";
 
+// 100dvh instead of vh
+
 const HomePage: React.FC = () => {
   const { navigateToUrl } = useContext(GlobalContext);
 
   return (
-    <Box style={{ backgroundColor: "lightblue", height: "100vh" }}>
+    <Box
+      style={{
+        backgroundColor: "lightblue",
+        height: "100vh",
+      }}
+    >
       <h1>Home Page</h1>
 
       <LazyImageWrap

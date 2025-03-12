@@ -13,5 +13,9 @@ export const MEDIUM = 500;
 // Spacing
 export const NAVBAR_HEIGHT = 100;
 
-export const SECTION_CLOSE_HEIGHT = "400px";
+export const SECTION_CLOSE_HEIGHT = "500px";
 export const SECTION_OPEN_HEIGHT = "1000px";
+
+//Photo slider
+export const DELAY_INDEX = 4;
+export const SLIDE_WIDTH = 300 * 2;

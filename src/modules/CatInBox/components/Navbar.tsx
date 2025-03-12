@@ -15,6 +15,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   alignItems: "center",
   height: NAVBAR_HEIGHT,
   position: "sticky",
+  width: "inherit",
 }));
 
 const Navbar: React.FC = () => {

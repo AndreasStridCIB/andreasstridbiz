@@ -1,56 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, styled } from "@mui/material";
-import { SECTION_CLOSE_HEIGHT } from "../utils/constants";
 import SlideItem from "./SlideItem";
+import { SECTION_CLOSE_HEIGHT } from "../../modules/CatInBox/utils/constants";
 
 const SliderContainer = styled(Box)({
   display: "flex",
   height: `calc(${SECTION_CLOSE_HEIGHT} - 50px)`, // Adjust the height as needed
-  width: "900px",
+  width: "calc(50vw - 100px)",
   justifyContent: "center",
-  margin: 0,
-  padding: 0,
-
   maskImage:
     "linear-gradient(to right, transparent, black 5% 95%, transparent)",
-  // "&:hover": {
-  //   "& > *": {
-  //     animationPlayState: "paused", // Pause animation for all children
-  //   },
-  // },
 });
 
 interface ImageSliderProps {
   images: string[];
+  hoveredImage: string | null;
   setHoveredImage: (image: string | null) => void;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   setHoveredImage,
+  hoveredImage,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   return (
-    <SliderContainer
-      id="slidecontainer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <SliderContainer id="slidecontainer">
       {images.map((image, index) => (
         <SlideItem
           key={index}
           image={image}
           index={index}
-          isHovered={isHovered}
+          hoveredImage={hoveredImage}
           setHoveredImage={setHoveredImage}
           totalImageNbr={images.length}
         />
