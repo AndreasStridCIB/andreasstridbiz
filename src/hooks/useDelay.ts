@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 
-const useThrottle = (delay: number) => {
+const useDelay = (delay: number) => {
   const shouldWait = useRef(false);
 
   const throttledCallback = useCallback(
@@ -21,4 +21,4 @@ const useThrottle = (delay: number) => {
   return throttledCallback;
 };
 
-export default useThrottle;
+export default useDelay;

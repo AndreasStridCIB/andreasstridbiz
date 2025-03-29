@@ -4,6 +4,7 @@ export const BLACK = "#080605";
 export const WHITE = "#F5F5F5";
 export const ORANGE = "#ED983B";
 export const DARK_BROWN = "#C38248";
+export const HOVER_ITEM_COLOR = "#898989";
 
 // Fonts
 export const BOLD = 700;

@@ -1,9 +1,8 @@
-import React, { lazy, Suspense, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import CatInBoxLogoBlack from "./assets/logos/CatInBox_Logo_Black.webp";
-import LazyImageWrap from "globalComponents/LazyImageWrap";
 import { GlobalContext } from "./GlobalContext";
 import { Box } from "@mui/material";
+import LazyImageWrap from "./globalComponents/lazyImage/LazyImage";
 
 // 100dvh instead of vh
 

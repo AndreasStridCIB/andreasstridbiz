@@ -4,9 +4,9 @@ import {
   DELAY_INDEX,
   SLIDE_WIDTH,
 } from "../../modules/CatInBox/utils/constants";
-import useThrottle from "../../hooks/mouseThrottle";
 import { getImageName } from "../../utils/functions";
-import LazyImageWrap from "../LazyImage";
+import useDelay from "../../hooks/useDelay";
+import LazyImageWrap from "../lazyImage/LazyImage";
 
 const sliding = () => keyframes`
    0% {
@@ -77,7 +77,7 @@ const SlideItem: React.FC<SlideItemProps> = ({
     throttledCallback(() => setHoveredImage(image));
   };
 
-  const throttledCallback = useThrottle(1000);
+  const throttledCallback = useDelay(1000);
 
   return (
     <SlideItemContainer

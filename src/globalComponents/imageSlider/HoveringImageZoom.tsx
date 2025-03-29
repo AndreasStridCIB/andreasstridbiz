@@ -1,7 +1,7 @@
 import { Box, keyframes, styled } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { getImageName } from "../../utils/functions";
-import LazyImageWrap from "../LazyImage";
+import LazyImageWrap from "../lazyImage/LazyImage";
 
 // fix
 // 1APA image that have not started yet should not show uptime.
@@ -34,8 +34,8 @@ const ModalOverlay = styled(Box)<{
   position: "fixed",
   top: top,
   left: left,
-  width: "900px",
-  height: "900px",
+  width: "800px",
+  height: "1000px",
   background:
     "radial-gradient(circle, rgba(0, 0, 0, 0.6) 50%, transparent 100%)",
   display: "flex",

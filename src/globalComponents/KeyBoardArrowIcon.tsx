@@ -1,6 +1,8 @@
 import { IconButton, styled } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
+const ICON_SIZE = 96;
+
 export const KeyBoardArrowIcon = styled(KeyboardArrowRightIcon)<{
   isOpen: boolean;
   direction: number;
@@ -8,29 +10,24 @@ export const KeyBoardArrowIcon = styled(KeyboardArrowRightIcon)<{
   transform: isOpen
     ? `rotate(${direction}deg)`
     : `rotate(${direction + 180}deg)`,
-  fontSize: theme.typography.pxToRem(64),
+  width: ICON_SIZE,
+  height: ICON_SIZE,
+
   transition: "transform 0.3s ease-in-out",
 }));
 
 const KeyBoardArrowIconBackground = styled(IconButton)(({ theme }) => ({
+  justifySelf: "center",
   backgroundColor: theme.palette.secondary.main,
   color: theme.palette.custom.orange,
   borderRadius: "50%",
-  width: 52,
-  height: 52,
+  width: ICON_SIZE,
+  height: ICON_SIZE,
+  marginTop: theme.spacing(2),
   "&:hover": {
     backgroundColor: theme.palette.primary.dark,
   },
 }));
-
-const KeyBoardArrowIconBackgroundAbsolute = styled(KeyBoardArrowIconBackground)(
-  ({ theme }) => ({
-    padding: theme.spacing(2),
-    position: "absolute",
-    bottom: theme.spacing(-2.5),
-    right: theme.spacing(4),
-  })
-);
 
 interface KeyBoardArrowIconProps {
   direction: number;
@@ -45,15 +42,5 @@ export const KeyBoardArrowIconWithBackground: React.FC<
     <KeyBoardArrowIconBackground onClick={handleClick}>
       <KeyBoardArrowIcon isOpen={isOpen} direction={direction} />
     </KeyBoardArrowIconBackground>
-  );
-};
-
-export const KeyBoardArrowIconWithBackgroundAbsolute: React.FC<
-  KeyBoardArrowIconProps
-> = ({ isOpen = false, direction, handleClick }) => {
-  return (
-    <KeyBoardArrowIconBackgroundAbsolute onClick={handleClick}>
-      <KeyBoardArrowIcon isOpen={isOpen} direction={direction} />
-    </KeyBoardArrowIconBackgroundAbsolute>
   );
 };

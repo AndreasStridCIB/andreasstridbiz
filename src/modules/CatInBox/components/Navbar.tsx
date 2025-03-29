@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { AppBar, styled, Typography, useTheme } from "@mui/material";
 import { BOLD, NAVBAR_HEIGHT, SEMI_BOLD } from "../utils/constants";
 import CatInBoxLogoBlack from "assets/logos/CatInBox_Logo_Black.webp";
-import LazyImageWrap from "globalComponents/LazyImageWrap";
 import "modules/CatInBox/fonts.css";
 import { GlobalContext } from "../../../GlobalContext";
-import NavBarItem from "./NavBarItem";
+import { MenuItemWrap } from "../../../style/MenuItemWrap";
+import LazyImageWrap from "../../../globalComponents/lazyImage/LazyImage";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   display: "grid",
@@ -38,10 +38,15 @@ const Navbar: React.FC = () => {
           />
         }
       />
-
-      <NavBarItem label="Design" onClick={() => navigateInPage("design")} />
-      <NavBarItem label="Code" onClick={() => navigateInPage("code")} />
-      <NavBarItem label="Media" onClick={() => navigateInPage("media")} />
+      <MenuItemWrap onClick={() => navigateInPage("navbar")} isActive={false}>
+        <Typography variant="h6">Design</Typography>
+      </MenuItemWrap>
+      <MenuItemWrap onClick={() => navigateInPage("navbar")} isActive={false}>
+        <Typography variant="h6">Code</Typography>
+      </MenuItemWrap>
+      <MenuItemWrap onClick={() => navigateInPage("navbar")} isActive={false}>
+        <Typography variant="h6">Media</Typography>
+      </MenuItemWrap>
     </StyledAppBar>
   );
 };
