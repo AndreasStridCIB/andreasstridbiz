@@ -9,3 +9,9 @@ export enum DesignSectionPages {
   DRAWINGS = "Drawings",
   UX_DESIGN = "UX-Design",
 }
+
+export interface NavBarItem {
+  label: string;
+  url: string;
+  isActive?: boolean;
+}

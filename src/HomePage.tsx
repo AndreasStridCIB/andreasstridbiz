@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import CatInBoxLogoBlack from "./assets/logos/CatInBox_Logo_Black.webp";
+import CatInBoxLogoBlack from "@/assets/logos/CatInBox_Logo_Black.webp";
+import AndreasStridComedyLogo from "@/assets/logos/AndreasStridComedyLogo.png";
 import { GlobalContext } from "./GlobalContext";
 import { Box } from "@mui/material";
 import LazyImageWrap from "./globalComponents/lazyImage/LazyImage";
@@ -25,6 +26,17 @@ const HomePage: React.FC = () => {
             width={128}
             height={168}
             onClick={() => navigateToUrl("catinbox")}
+            alt="Temp"
+          />
+        }
+      />
+      <LazyImageWrap
+        imageComp={
+          <img
+            src={AndreasStridComedyLogo}
+            width={128}
+            height={168}
+            onClick={() => navigateToUrl("comedy")}
             alt="Temp"
           />
         }

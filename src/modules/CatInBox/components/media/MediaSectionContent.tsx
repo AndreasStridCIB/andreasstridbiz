@@ -38,15 +38,15 @@ const MediaSectionContent: React.FC<DesignSectionContentProps> = ({
     <>
       {activeSection === MediaSectionPages.PHOTOS && (
         <GridContainer direction="row" rows={3} spaceType="1fr">
-          <StyledDoubleArrowIcon
+          {/* <StyledDoubleArrowIcon
             direction="right"
             sx={{ alignSelf: "center" }}
-          />
+          /> */}
           <ImageSlider images={photosPath} />
-          <StyledDoubleArrowIcon
+          {/* <StyledDoubleArrowIcon
             direction="right"
             sx={{ alignSelf: "center" }}
-          />
+          /> */}
         </GridContainer>
       )}
       {activeSection === MediaSectionPages.THUMBNAILS && (

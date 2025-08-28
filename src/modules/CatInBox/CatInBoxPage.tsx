@@ -8,48 +8,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import { BLACK, DARK_BROWN, ORANGE, WHITE } from "./utils/constants";
-import "./fonts.css";
-import Navbar from "./components/Navbar";
+import "../../fonts.css"; // Importing global fonts
 import AndreasSection from "./components/AndreasSection";
 import DesignSection from "./components/design/DesignSection";
 import MediaSection from "./components/media/MediaSection";
-
-declare module "@mui/material/styles" {
-  interface Palette {
-    custom: {
-      orange: string;
-      darkBrown: string;
-    };
-  }
-  interface PaletteOptions {
-    custom?: {
-      orange?: string;
-      darkBrown?: string;
-    };
-  }
-}
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: BLACK,
-    },
-    secondary: {
-      main: WHITE,
-    },
-    text: {
-      primary: WHITE,
-      secondary: BLACK,
-    },
-    custom: {
-      orange: ORANGE,
-      darkBrown: DARK_BROWN,
-    },
-  },
-  typography: {
-    fontFamily: '"Sarpanch", serif',
-  },
-});
+import Navbar from "../../globalComponents/NavBar";
 
 // styled component extend div
 const CatInBoxPageGrid = styled(Box)`
@@ -68,12 +31,10 @@ const CatInBoxPageGrid = styled(Box)`
 
 const CatInBoxPage: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <CatInBoxPageGrid>
-        <Navbar />
-        <AndreasSection />
-        <Typography
+    <CatInBoxPageGrid>
+      <Navbar navBarItems={[]} logo={""} />
+      <AndreasSection />
+      {/* <Typography
           sx={{
             gridArea: "designTitle",
             height: 200,
@@ -84,21 +45,20 @@ const CatInBoxPage: React.FC = () => {
         >
           Design
         </Typography>
-        <DesignSection />
-        <Typography
-          sx={{
-            gridArea: "mediaTitle",
-            height: 200,
-            alignContent: "end",
-            marginLeft: 2,
-          }}
-          variant="h1"
-        >
-          Media
-        </Typography>
-        <MediaSection />
-      </CatInBoxPageGrid>
-    </ThemeProvider>
+        <DesignSection /> */}
+      <Typography
+        sx={{
+          gridArea: "mediaTitle",
+          height: 200,
+          alignContent: "end",
+          marginLeft: 2,
+        }}
+        variant="h1"
+      >
+        Media
+      </Typography>
+      <MediaSection />
+    </CatInBoxPageGrid>
   );
 };
 

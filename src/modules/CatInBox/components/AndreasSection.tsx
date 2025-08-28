@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 import { BLACK, SEMI_BOLD } from "../utils/constants";
-import ProfileImg from "assets/photo/Profile.webp";
+import ProfileImg from "@/assets/photo/Profile.webp";
 import LazyImageWrap from "../../../globalComponents/lazyImage/LazyImage";
 
 const SectionDiv = styled(Box)(({ theme }) => ({

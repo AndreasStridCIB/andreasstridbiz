@@ -1,22 +1,33 @@
 import { css, keyframes } from "@mui/material/styles";
-import {
-  HOVER_ITEM_COLOR,
-  ORANGE,
-  WHITE,
-} from "../modules/CatInBox/utils/constants";
 
 const DURATION = "0.66s";
 
 // Keyframes for the border animation
-const borderAnimation = (isClosing: boolean, isActive: boolean) => keyframes`
+const borderAnimation = (
+  theme: any,
+  isClosing: boolean,
+  isActive: boolean
+) => keyframes`
   0% {
     width: ${isClosing ? "100%" : "0"};
     right: 0;
-    background-color: ${isActive ? ORANGE : isClosing ? ORANGE : WHITE};
+    background-color: ${
+      isActive
+        ? theme.palette.custom.hoverColor
+        : isClosing
+        ? theme.palette.custom.hoverColor
+        : theme.palette.secondary.main
+    };
   }
   100% {
     width: ${isClosing ? "0" : "100%"};
-    background-color: ${isActive ? ORANGE : isClosing ? WHITE : ORANGE};
+    background-color: ${
+      isActive
+        ? theme.palette.custom.hoverColor
+        : isClosing
+        ? theme.palette.secondary.main
+        : theme.palette.custom.hoverColor
+    };
     right: 0;
   }
 `;
@@ -32,13 +43,21 @@ const scaleAnimation = (isClosing: boolean) => keyframes`
   }
 `;
 
-const colorFade = (isClosing: boolean) => keyframes`
+const colorFade = (theme: any, isClosing: boolean) => keyframes`
   0% {
-      color: ${isClosing ? ORANGE : WHITE};
+      color: ${
+        isClosing
+          ? theme.palette.custom.hoverColor
+          : theme.palette.secondary.main
+      };
    
   }
   100% {
-      color: ${isClosing ? WHITE : ORANGE};
+      color: ${
+        isClosing
+          ? theme.palette.secondary.main
+          : theme.palette.custom.hoverColor
+      };
   
   }
 `;
@@ -46,17 +65,22 @@ const colorFade = (isClosing: boolean) => keyframes`
 export const hoverEffect = (theme: any, isActive: boolean) => css`
   position: relative;
   overflow: hidden;
-  color: ${isActive ? ORANGE : theme.palette.secondary.main};
+  color: ${isActive
+    ? theme.palette.custom.hoverColor
+    : theme.palette.secondary.main};
   &:hover,
   &:focus {
     animation: ${scaleAnimation(false)} ${DURATION} ease-in-out forwards,
-      ${isActive ? "" : colorFade(false)} ${DURATION} ease-in-out forwards;
+      ${isActive ? "" : colorFade(theme, false)} ${DURATION} ease-in-out
+        forwards;
   }
 
   &:not(:hover):not(:focus) {
     animation: ${scaleAnimation(true)} ${DURATION} ease-in-out forwards,
-      ${isActive ? "" : colorFade(true)} ${DURATION} ease-in-out forwards;
-    color: ${isActive ? ORANGE : theme.palette.secondary.main};
+      ${isActive ? "" : colorFade(theme, true)} ${DURATION} ease-in-out forwards;
+    color: ${isActive
+      ? theme.palette.custom.hoverColor
+      : theme.palette.secondary.main};
   }
 
   &::before {
@@ -67,18 +91,22 @@ export const hoverEffect = (theme: any, isActive: boolean) => css`
     width: 0;
     height: 2px;
 
-    background-color: ${isActive ? ORANGE : WHITE};
+    background-color: ${isActive
+      ? theme.palette.custom.hoverColor
+      : theme.palette.secondary.main};
     transform: translateX(-50%);
   }
 
   &:hover::before,
   &:focus::before {
-    animation: ${borderAnimation(false, isActive)} ${DURATION} ease-in-out
-      forwards;
+    animation: ${borderAnimation(theme, false, isActive)} ${DURATION}
+      ease-in-out forwards;
   }
   &:not(:hover):not(:focus)::before {
-    animation: ${borderAnimation(true, isActive)} ${DURATION} ease-in-out
+    animation: ${borderAnimation(theme, true, isActive)} ${DURATION} ease-in-out
       forwards;
-    background-color: ${isActive ? ORANGE : WHITE};
+    background-color: ${isActive
+      ? theme.palette.custom.hoverColor
+      : theme.palette.secondary.main};
   }
 `;

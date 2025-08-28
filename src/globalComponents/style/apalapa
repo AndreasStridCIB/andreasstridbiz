@@ -1,0 +1,30 @@
+<AnimatedImage
+        src={doflamingo}
+        alt={altOverlay}
+        show={showStandupTwo}
+        left="6%" // Instead of 80px
+        top="10%" // Instead of 120px
+        width="30%"
+        aspectRatio="0.57"
+        animationDuration={ANIMATION_DURATION}
+      />
+      <AnimatedImage
+        src={outie}
+        alt={altOverlay}
+        show={showStandupOne}
+        left="0%" // Instead of -1px
+        top="41%" // Instead of 480px
+        width="40%"
+        aspectRatio="1.29"
+        animationDuration={ANIMATION_DURATION}
+      />
+      <AnimatedImage
+        src={meCat}
+        alt={altOverlay}
+        show={showStandupOne}
+        left="-6%" // Instead of -100px
+        top="37%" // Instead of 520px
+        height="55%"
+        aspectRatio="0.59"
+        animationDuration={ANIMATION_DURATION}
+      />
