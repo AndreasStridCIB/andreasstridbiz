@@ -13,5 +13,6 @@ export enum DesignSectionPages {
 export interface NavBarItem {
   label: string;
   url: string;
+  yCoordinate?: number;
   isActive?: boolean;
 }

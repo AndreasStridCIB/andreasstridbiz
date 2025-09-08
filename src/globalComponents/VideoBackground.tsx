@@ -1,47 +1,64 @@
-import React, { useEffect, useRef } from "react";
-import { useDelayRender } from "../hooks/useDelayRender";
-import { BASE_DELAY } from "./constants";
+import React, { useRef, useEffect } from "react";
+import email from "../../assets/email-icon.svg";
 
 interface VideoBackgroundProps {
   youtubeId: string;
+  position?: "left" | "right";
+  style?: React.CSSProperties;
 }
 
-const VideoBackground: React.FC<VideoBackgroundProps> = ({ youtubeId }) => {
+const VideoBackground: React.FC<VideoBackgroundProps> = ({
+  youtubeId,
+  position = "right",
+  style,
+}) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const shouldRender = useDelayRender(BASE_DELAY * 3);
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
 
-  if (!shouldRender) return null;
-  // Prevent pausing by re-focusing the iframe if needed
+    const handleMouseEnter = () => {
+      // Send message to YouTube player to unmute
+      iframe.contentWindow?.postMessage(
+        '{"event":"command","func":"unMute","args":""}',
+        "*"
+      );
+    };
+
+    const handleMouseLeave = () => {
+      // Send message to YouTube player to mute
+      iframe.contentWindow?.postMessage(
+        '{"event":"command","func":"mute","args":""}',
+        "*"
+      );
+    };
+
+    iframe.addEventListener("mouseenter", handleMouseEnter);
+    iframe.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      iframe.removeEventListener("mouseenter", handleMouseEnter);
+      iframe.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   return (
-    <div
+    <iframe
+      ref={iframeRef}
+      src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd720&hd=1&enablejsapi=1`}
       style={{
-        background: "black",
-        display: "grid",
-        // gridArea: "videoBackground",
+        aspectRatio: "0.66", // 677width / 1204 height = 0.66
         width: "100%",
-        height: "100%",
-        zIndex: 0,
-        overflow: "hidden",
+        maxWidth: "600px",
+        minHeight: "600px",
+        justifySelf: position === "left" ? "end" : "start",
+        border: "none",
+        ...style,
       }}
-    >
-      <iframe
-        ref={iframeRef}
-        title="YouTube Video Background"
-        width="315"
-        height="560"
-        src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${youtubeId}&modestbranding=1&showinfo=0&rel=0&disablekb=1`}
-        frameBorder="0"
-        allow="autoplay; encrypted-media"
-        allowFullScreen={false}
-        style={{
-          pointerEvents: "none", // Prevent user interaction
-
-          objectFit: "cover",
-        }}
-      />
-    </div>
+      allow="autoplay; encrypted-media"
+      title={`YouTube video ${youtubeId}`}
+    />
   );
 };
 

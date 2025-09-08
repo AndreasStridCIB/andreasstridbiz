@@ -2,6 +2,7 @@
 // Color
 export const BLACK = "#080605";
 export const RED = "#C74050";
+export const RED2 = "#C64051";
 export const WHITE = "#F5F5F5";
 export const LIGHT_BROWN = "#FFE0BC";
 export const HOVER_ITEM_COLOR = "#898989";
@@ -10,3 +11,7 @@ export const HOVER_ITEM_COLOR = "#898989";
 export const BOLD = 700;
 export const SEMI_BOLD = 600;
 export const MEDIUM = 500;
+
+// Spacing
+export const NAVBAR_HEIGHT = 75;
+export const BASE_DELAY = 1000;

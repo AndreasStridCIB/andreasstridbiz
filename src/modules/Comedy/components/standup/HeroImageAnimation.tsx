@@ -15,12 +15,36 @@ import standup2 from "@/assets/photo/Standup2.webp";
 import standup3 from "@/assets/photo/Standup3.webp";
 import standup4 from "@/assets/photo/Standup4.webp";
 import { clear } from "console";
+import SocialMediaTab from "../../../../globalComponents/SocialMediaTab";
+import { NAVBAR_HEIGHT } from "../../../../globalComponents/constants";
 
 const ANIMATION_DURATION = 3000; // ms
 const altBase = "Base Hero Image";
 const altOverlay = "Overlay Hero Image";
 
 const ANIMATION_DIFF = 300; // ms
+
+// Fixed positioning container
+const FixedHeroContainer = styled("div")(({ theme }) => ({
+  position: "fixed",
+  top: 0,
+  zIndex: 1,
+  marginTop: NAVBAR_HEIGHT,
+  display: "grid",
+  maxWidth: "1900px",
+  left: "0",
+  alignItems: "center",
+  justifyContent: "center",
+  justifySelf: "center",
+  justifyItems: "center",
+  [theme.breakpoints.up("xl")]: {
+    left: "1%",
+    right: "1%",
+  },
+  [theme.breakpoints.down("md")]: {
+    marginTop: NAVBAR_HEIGHT / 2,
+  },
+}));
 
 export const HeroImageAnimation: React.FC = () => {
   const [showOutie, setShowOutie] = useState(false);
@@ -127,7 +151,7 @@ export const HeroImageAnimation: React.FC = () => {
           left="6%" // Instead of 80px
           top="15%" // Instead of 120px
           width="30%"
-          height="80%"
+          height="90%"
           animationDuration={ANIMATION_DURATION}
           blur={blurImages} // Pass the blur state
         />
@@ -209,7 +233,7 @@ export const HeroImageAnimation: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
+    <FixedHeroContainer>
       <img
         src={baseImageSrc}
         alt={altBase}
@@ -234,6 +258,6 @@ export const HeroImageAnimation: React.FC = () => {
         height="100%"
         animationDuration={0}
       />
-    </div>
+    </FixedHeroContainer>
   );
 };

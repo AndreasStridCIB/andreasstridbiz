@@ -8,45 +8,51 @@ import {
 } from "@mui/material";
 import React from "react";
 import "../../fonts.css";
-import { BLACK, LIGHT_BROWN, RED, WHITE } from "./utils/constants";
 import Navbar from "../../globalComponents/NavBar";
 import { NavBarItem } from "../CatInBox/utils/types";
 // import CatInBoxLogoBlack from "assets/logos/CatInBox_Logo_Black.webp";
-import AndreasStridComedyLogo from "@/assets/logos/AndreasStridComedyLogo.png";
-import StandupSection from "./components/standup/StandupSection";
-import VideoBackground from "../../globalComponents/VideoBackground";
-import PhotoSlider from "../../globalComponents/imageSlider/PhotoSlider";
+
+import StandupSketchesSection from "./components/standup/StandupSketchesSection";
+
+import { HeroImageAnimation } from "./components/standup/HeroImageAnimation";
+
+import Contact from "./components/standup/Contact";
 
 // styled component extend div
-const ComedyPageGrid = styled(Box)`
-  display: grid;
-  background-color: ${WHITE};
+const ComedyPageGrid = styled(Box)``;
 
-  grid-template-areas:
-    "navbar"
-    "standup"
-    "designTitle"
-    "design"
-    "mediaTitle"
-    "media";
-  height: 100%;
-  width: 100%;
-`;
-
+// When creating your navBarItems
 const navBarItems: NavBarItem[] = [
-  { label: "Standup", url: "1" },
-  { label: "Sketches", url: "2" },
-  { label: "Satire News", url: "3" },
-  { label: "Standup", url: "4" },
+  {
+    label: "Home",
+    url: "navbar",
+    yCoordinate: 0, // Scroll to top
+  },
+  {
+    label: "Standup",
+    url: "about",
+    yCoordinate: 900, // Scroll to 800px from top
+  },
+  {
+    label: "Sketches",
+    url: "services",
+    yCoordinate: 2100, // Scroll to 1600px from top
+  },
+  {
+    label: "Contact",
+    url: "contact", // No yCoordinate - will use element ID
+    yCoordinate: 3200, // Scroll to 1600px from top
+  },
 ];
-
+// logo={AndreasStridComedyLogo}
 const CatInBoxPage: React.FC = () => {
   return (
     <ComedyPageGrid>
-      <Navbar logo={AndreasStridComedyLogo} navBarItems={navBarItems} />
-      {/* <VideoBackground youtubeId="0yyNrQ3FjY4" /> */}
-
-      <StandupSection />
+      <Navbar navBarItems={navBarItems} />
+      <HeroImageAnimation />
+      <StandupSketchesSection />
+      {/* <Shows /> */}
+      <Contact />
     </ComedyPageGrid>
   );
 };

@@ -13,6 +13,7 @@ export const MEDIUM = 500;
 
 // Spacing
 export const NAVBAR_HEIGHT = 100;
+export const FILLER_HEIGHT = 75;
 
 export const SECTION_CLOSE_HEIGHT = "500px";
 export const SECTION_OPEN_HEIGHT = "1000px";

@@ -1,14 +1,29 @@
-import React, { useContext } from "react";
-import { AppBar, styled, Typography, useTheme } from "@mui/material";
+import React, { useContext, useState } from "react";
+import {
+  AppBar,
+  IconButton,
+  styled,
+  Typography,
+  useTheme,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { NAVBAR_HEIGHT } from "./constants";
 import { GlobalContext } from "../GlobalContext";
 import LazyImageWrap from "./lazyImage/LazyImageWrap";
-import { MenuItemWrap } from "../style/MenuItemWrap";
 import { NavBarItem } from "../modules/CatInBox/utils/types";
+import { WHITE } from "../modules/CatInBox/utils/constants";
+import AnimationWrapper, { StyledMenuItem } from "./style/AnimationWrapper";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
+  gridTemplateColumns: "1fr auto", // Changed to accommodate hamburger
   gridGap: theme.spacing(2),
   gridArea: "navbar",
   alignItems: "center",
@@ -17,52 +32,151 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   position: "sticky",
   width: "inherit",
   zIndex: 3,
+  padding: `0 ${theme.spacing(2)}`,
+  [theme.breakpoints.down("md")]: {
+    height: NAVBAR_HEIGHT / 2,
+    padding: `0 ${theme.spacing(0)}`,
+  },
+}));
+
+const DesktopMenu = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(5, fit-content(100%))",
+  gridGap: theme.spacing(8),
+  justifySelf: "end",
+  [theme.breakpoints.down("md")]: {
+    display: "none", // Hide on mobile
+    gridGap: theme.spacing(4),
+  },
+}));
+
+const MobileMenuButton = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  justifySelf: "end",
+  color: WHITE,
+  [theme.breakpoints.down("md")]: {
+    display: "flex", // Show on mobile
+  },
+}));
+
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  "& .MuiDrawer-paper": {
+    width: 280,
+    backgroundColor: theme.palette.primary.main,
+    color: WHITE,
+    padding: theme.spacing(2),
+  },
+}));
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: theme.spacing(2),
+  paddingBottom: theme.spacing(1),
+  borderBottom: `1px solid ${theme.palette.divider}`,
 }));
 
 interface NavbarProps {
   navBarItems: NavBarItem[];
-  logo: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ navBarItems, logo }) => {
+const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
   const theme = useTheme();
-  const { navigateInPage } = useContext(GlobalContext);
+  const { navigateInPage, navigateToUrl } = useContext(GlobalContext);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Check if we're on mobile
+  const handleNavigation = (item: NavBarItem) => {
+    if (item.yCoordinate !== undefined) {
+      // Navigate to specific Y coordinate
+      navigateInPage(item.url, item.yCoordinate);
+    } else {
+      // Original behavior - navigate to element ID
+      navigateInPage(item.url);
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleMobileMenuItemClick = (url: string) => {
+    navigateInPage(url);
+    setMobileMenuOpen(false); // Close menu after navigation
+  };
+
+  const menueItems = () => {
+    return (
+      <>
+        {navBarItems.map((item) => (
+          <StyledMenuItem
+            key={item.label}
+            onClick={() => handleNavigation(item)}
+            disabled={false}
+            // isActive={item.isActive ?? false}
+          >
+            <Typography variant="h5">{item.label}</Typography>
+          </StyledMenuItem>
+        ))}
+      </>
+    );
+  };
 
   return (
-    <StyledAppBar id="navbar">
-      <LazyImageWrap
-        imageComp={
-          <img
-            src={logo}
-            width={64}
-            height={64}
-            onClick={() => navigateInPage("navbar")}
-            style={{
-              marginLeft: theme.spacing(2),
-              marginRight: theme.spacing(2),
+    <>
+      <StyledAppBar id="navbar">
+        <AnimationWrapper onClick={() => navigateToUrl("/")}>
+          <IconButton
+            onClick={() => navigateToUrl("/")}
+            sx={{
+              marginRight: theme.spacing(1),
+              color: WHITE,
             }}
-          />
-        }
-      />
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, fit-content(100%))",
-          justifyItems: "end",
-          justifyContent: "end",
-        }}
-      >
-        {navBarItems.map((item) => (
-          <MenuItemWrap
-            key={item.label}
-            onClick={() => navigateInPage(item.url)}
-            isActive={item.isActive ?? false}
           >
-            <Typography variant="h6">{item.label}</Typography>
-          </MenuItemWrap>
-        ))}
-      </div>
-    </StyledAppBar>
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography
+            variant="h5"
+            sx={{
+              // Responsive font size for mobile
+              justifySelf: "start",
+
+              [theme.breakpoints.down("md")]: {
+                fontSize: "1rem",
+              },
+            }}
+          >
+            AndreasStrid.com
+          </Typography>
+        </AnimationWrapper>
+
+        {/* Desktop Menu */}
+        <DesktopMenu>{menueItems()}</DesktopMenu>
+
+        {/* Mobile Hamburger Menu Button */}
+        <MobileMenuButton onClick={handleMobileMenuToggle}>
+          <MenuIcon />
+        </MobileMenuButton>
+      </StyledAppBar>
+
+      {/* Mobile Drawer Menu */}
+      <StyledDrawer
+        anchor="right"
+        open={mobileMenuOpen}
+        onClose={handleMobileMenuToggle}
+      >
+        <DrawerHeader>
+          <Typography variant="h6"></Typography>
+          <IconButton onClick={handleMobileMenuToggle} sx={{ color: WHITE }}>
+            <CloseIcon />
+          </IconButton>
+        </DrawerHeader>
+
+        {menueItems()}
+      </StyledDrawer>
+    </>
   );
 };
 

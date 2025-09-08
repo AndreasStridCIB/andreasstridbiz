@@ -1,6 +1,6 @@
 import { css, keyframes } from "@mui/material/styles";
 
-const DURATION = "0.66s";
+export const SCALE_DURATION = "0.66s";
 
 // Keyframes for the border animation
 const borderAnimation = (
@@ -33,13 +33,13 @@ const borderAnimation = (
 `;
 
 // Keyframes for the scale increase animation
-const scaleAnimation = (isClosing: boolean) => keyframes`
+export const scaleAnimation = (isClosing: boolean) => keyframes`
   0% {
-   transform: ${isClosing ? "scale(1.1)" : "scale(1)"};
+   transform: ${isClosing ? "scale(1.25)" : "scale(1)"};
  
   }
   100% {
-      transform: ${isClosing ? "scale(1)" : "scale(1.1)"};s
+      transform: ${isClosing ? "scale(1)" : "scale(1.25)"};s
   }
 `;
 
@@ -70,14 +70,15 @@ export const hoverEffect = (theme: any, isActive: boolean) => css`
     : theme.palette.secondary.main};
   &:hover,
   &:focus {
-    animation: ${scaleAnimation(false)} ${DURATION} ease-in-out forwards,
-      ${isActive ? "" : colorFade(theme, false)} ${DURATION} ease-in-out
+    animation: ${scaleAnimation(false)} ${SCALE_DURATION} ease-in-out forwards,
+      ${isActive ? "" : colorFade(theme, false)} ${SCALE_DURATION} ease-in-out
         forwards;
   }
 
   &:not(:hover):not(:focus) {
-    animation: ${scaleAnimation(true)} ${DURATION} ease-in-out forwards,
-      ${isActive ? "" : colorFade(theme, true)} ${DURATION} ease-in-out forwards;
+    animation: ${scaleAnimation(true)} ${SCALE_DURATION} ease-in-out forwards,
+      ${isActive ? "" : colorFade(theme, true)} ${SCALE_DURATION} ease-in-out
+        forwards;
     color: ${isActive
       ? theme.palette.custom.hoverColor
       : theme.palette.secondary.main};
@@ -96,17 +97,16 @@ export const hoverEffect = (theme: any, isActive: boolean) => css`
       : theme.palette.secondary.main};
     transform: translateX(-50%);
   }
-
-  &:hover::before,
-  &:focus::before {
-    animation: ${borderAnimation(theme, false, isActive)} ${DURATION}
-      ease-in-out forwards;
-  }
-  &:not(:hover):not(:focus)::before {
-    animation: ${borderAnimation(theme, true, isActive)} ${DURATION} ease-in-out
-      forwards;
-    background-color: ${isActive
-      ? theme.palette.custom.hoverColor
-      : theme.palette.secondary.main};
-  }
 `;
+// &:hover::before,
+//   &:focus::before {
+//     animation: ${borderAnimation(theme, false, isActive)} ${SCALE_DURATION}
+//       ease-in-out forwards;
+//   }
+//   &:not(:hover):not(:focus)::before {
+//     animation: ${borderAnimation(theme, true, isActive)} ${SCALE_DURATION} ease-in-out
+//       forwards;
+//     background-color: ${isActive
+//       ? theme.palette.custom.hoverColor
+//       : theme.palette.secondary.main};
+//   }

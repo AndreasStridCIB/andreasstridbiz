@@ -13,6 +13,6 @@ export const SectionDiv = styled(Box)(({ theme }) => ({
   transition: "height 0.3s ease-in-out",
 
   "& > *": {
-    margin: `${theme.spacing(4)} ${theme.spacing(4)}`, // Top-Bottom and Left-Right margins for children
+    margin: `${theme.spacing(4)}`, // Top-Bottom and Left-Right margins for children
   },
 }));
