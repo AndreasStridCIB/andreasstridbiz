@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   TypographyProps,
@@ -8,8 +8,6 @@ import {
   keyframes,
 } from "@mui/material";
 import { WHITE } from "../modules/CatInBox/utils/constants";
-import { useDelayRender } from "../hooks/useDelayRender";
-import { BASE_DELAY } from "./constants";
 import { RED } from "../modules/Comedy/utils/constants";
 
 interface TitleAnimationProps extends TypographyProps {
@@ -61,7 +59,6 @@ const TitleAnimation: React.FC<TitleAnimationProps> = ({
   stagger = 100,
   backgroundColor = WHITE,
   triggerY = 100,
-  ...props
 }) => {
   const [shouldRender, setShouldRender] = useState(false);
   const theme = useTheme();

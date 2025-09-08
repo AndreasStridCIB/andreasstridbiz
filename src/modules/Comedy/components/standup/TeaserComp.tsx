@@ -1,19 +1,9 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  useTheme,
-  styled,
-  keyframes,
-  useMediaQuery,
-} from "@mui/material";
-import { MenuItemWrap } from "../../../../style/MenuItemWrap";
+import { Box, Typography, useTheme, styled, keyframes } from "@mui/material";
 import YouTubeVideo from "../../../../globalComponents/YouTubeVideo";
 import RightArrow from "@/assets/logos/Right_Arrow.webp";
 import LeftArrow from "@/assets/logos/Left_Arrow.webp";
-import { LIGHT_BROWN, RED, WHITE } from "../../utils/constants";
-import useDelay from "../../../../hooks/useDelay";
-import { SCALE_DURATION, scaleAnimation } from "../../../../style/styledCss";
+import { SCALE_DURATION } from "../../../../style/styledCss";
 
 interface TeaserCompProps {
   label: string;
@@ -89,7 +79,7 @@ const TeaserContainer = styled(Box)(({ theme }) => ({
   justifyItems: "center",
   alignItems: "center",
   alignContent: "center",
-  backgroundColor: RED,
+  backgroundColor: theme.palette.custom.red,
   paddingBottom: "128px",
   paddingTop: theme.spacing(4),
   width: "100%",
@@ -97,8 +87,10 @@ const TeaserContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TeaserLabel = styled(Typography)<{ isHovered: boolean }>(
-  ({ isHovered }) => ({
-    color: isHovered ? LIGHT_BROWN : WHITE,
+  ({ isHovered, theme }) => ({
+    color: isHovered
+      ? theme.palette.custom.lightBrown
+      : theme.palette.custom.white,
 
     animation: `${teaserAnimation(
       !isHovered

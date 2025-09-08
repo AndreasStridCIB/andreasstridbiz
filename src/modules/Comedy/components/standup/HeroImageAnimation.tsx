@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { styled, keyframes } from "@mui/material";
+import { styled } from "@mui/material";
 import baseImageSrc from "@/assets/photo/WebSite_Hero_Image_Empty.webp";
 import outie from "@/assets/photo/Ouite.webp";
 import meCat from "@/assets/photo/Me_Cat.webp";
@@ -14,8 +14,6 @@ import standup1 from "@/assets/photo/Standup1.webp";
 import standup2 from "@/assets/photo/Standup2.webp";
 import standup3 from "@/assets/photo/Standup3.webp";
 import standup4 from "@/assets/photo/Standup4.webp";
-import { clear } from "console";
-import SocialMediaTab from "../../../../globalComponents/SocialMediaTab";
 import { NAVBAR_HEIGHT } from "../../../../globalComponents/constants";
 
 const ANIMATION_DURATION = 3000; // ms
@@ -31,16 +29,16 @@ const FixedHeroContainer = styled("div")(({ theme }) => ({
   zIndex: 1,
   marginTop: NAVBAR_HEIGHT,
   display: "grid",
-  maxWidth: "1900px",
+  // maxWidth: "1900px",
   left: "0",
   alignItems: "center",
   justifyContent: "center",
   justifySelf: "center",
   justifyItems: "center",
-  [theme.breakpoints.up("xl")]: {
-    left: "1%",
-    right: "1%",
-  },
+  // [theme.breakpoints.up("xl")]: {
+  //   left: "1%",
+  //   right: "1%",
+  // },
   [theme.breakpoints.down("md")]: {
     marginTop: NAVBAR_HEIGHT / 2,
   },

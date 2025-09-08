@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   Alert,
   Box,
@@ -6,19 +6,18 @@ import {
   styled,
   Tooltip,
   Typography,
-  useTheme,
 } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
-import { RED, WHITE } from "../../utils/constants";
-import { GlobalContext } from "../../../../GlobalContext";
+import { RED } from "../../utils/constants";
 import {
   DURATION,
   StyledMenuItem,
 } from "../../../../globalComponents/style/AnimationWrapper";
 import { FILLER_HEIGHT } from "../../../CatInBox/utils/constants";
+import { openExternalUrl } from "../../../../utils/globalFunctions";
 
 const FBURL = "https://www.facebook.com/profile.php?id=61573616212984";
 const IGURL = "https://www.instagram.com/andreasstridcomedy/";
@@ -32,14 +31,14 @@ interface SocialMediaTabProps {
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: theme.body1,
   fontWeight: 900,
-  color: WHITE,
+  color: theme.palette.custom.white,
 }));
 
 const StyledIcon = styled(StyledMenuItem)<{
   disabled?: boolean;
   isContactPage?: boolean;
 }>(({ theme, isContactPage }) => ({
-  color: WHITE,
+  color: theme.palette.custom.white,
   display: isContactPage ? "flex" : "inline-flex",
   alignItems: "center",
   gap: isContactPage ? theme.spacing(2) : 0,
@@ -75,7 +74,7 @@ const SocialMediaContainer = styled(Box)<{ isContactPage?: boolean }>(
     justifyItems: "start",
     width: "100%",
     height: isContactPage ? "auto" : FILLER_HEIGHT,
-    backgroundColor: RED,
+    backgroundColor: theme.palette.custom.red,
     gap: theme.spacing(isContactPage ? 0 : 8),
     paddingLeft: isContactPage ? theme.spacing(4) : theme.spacing(8),
 
@@ -98,9 +97,6 @@ const SocialMediaContainer = styled(Box)<{ isContactPage?: boolean }>(
 const SocialMediaTab: React.FC<SocialMediaTabProps> = ({
   isContactPage = false,
 }) => {
-  const { navigateToUrl, openExternalUrl } = useContext(GlobalContext);
-  const theme = useTheme();
-
   const [showCopiedToast, setShowCopiedToast] = useState(false);
 
   const handleEmailClick = async () => {

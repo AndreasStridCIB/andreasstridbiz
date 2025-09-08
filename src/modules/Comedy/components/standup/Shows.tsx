@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Typography, useTheme, styled } from "@mui/material";
-import { LIGHT_BROWN, RED, WHITE } from "../../utils/constants";
+import { Box, useTheme, styled } from "@mui/material";
+import { LIGHT_BROWN } from "../../utils/constants";
 import TitleAnimation from "../../../../globalComponents/TitleAnimation";
 import { NAVBAR_HEIGHT } from "../../../CatInBox/utils/constants";
 import Show from "./Show";
@@ -45,7 +45,9 @@ const Shows: React.FC = () => {
 
   return (
     <ShowsGrid>
-      <Box sx={{ height: NAVBAR_HEIGHT, background: RED }} />
+      <Box
+        sx={{ height: NAVBAR_HEIGHT, background: theme.palette.custom.red }}
+      />
       <TitleAnimation title="SHOWS" backgroundColor={LIGHT_BROWN} />
       <Box
         sx={{

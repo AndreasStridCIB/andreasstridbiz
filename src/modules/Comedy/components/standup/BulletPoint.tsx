@@ -1,14 +1,9 @@
 import React from "react";
 import { Box, Typography, useTheme, SvgIconProps } from "@mui/material";
-import { RED } from "../../utils/constants";
-import MicIcon from "@mui/icons-material/Mic";
-
 interface BulletPointProps {
   text: string;
-  Icon: React.ComponentType<SvgIconProps>; // Add Icon prop
+  Icon: React.ComponentType<SvgIconProps>;
 }
-
-const bulletColor = RED;
 
 const BulletPoint: React.FC<BulletPointProps> = ({ text, Icon }) => {
   const theme = useTheme();
@@ -27,7 +22,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({ text, Icon }) => {
     >
       <Icon
         sx={{
-          color: bulletColor,
+          color: theme.palette.custom.red,
           width: { xs: "24px", sm: "36px" },
           height: { xs: "24px", sm: "36px" },
           marginRight: theme.spacing(1),

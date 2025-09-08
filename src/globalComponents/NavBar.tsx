@@ -6,20 +6,15 @@ import {
   Typography,
   useTheme,
   Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { NAVBAR_HEIGHT } from "./constants";
-import { GlobalContext } from "../GlobalContext";
-import LazyImageWrap from "./lazyImage/LazyImageWrap";
 import { NavBarItem } from "../modules/CatInBox/utils/types";
-import { WHITE } from "../modules/CatInBox/utils/constants";
 import AnimationWrapper, { StyledMenuItem } from "./style/AnimationWrapper";
+import { navigateInPage } from "../utils/globalFunctions";
+import { GlobalContext } from "../utils/globalContextTemplate";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   display: "grid",
@@ -53,7 +48,7 @@ const DesktopMenu = styled("div")(({ theme }) => ({
 const MobileMenuButton = styled(IconButton)(({ theme }) => ({
   display: "none",
   justifySelf: "end",
-  color: WHITE,
+  color: theme.palette.custom.white,
   [theme.breakpoints.down("md")]: {
     display: "flex", // Show on mobile
   },
@@ -63,7 +58,7 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     width: 280,
     backgroundColor: theme.palette.primary.main,
-    color: WHITE,
+    color: theme.palette.custom.white,
     padding: theme.spacing(2),
   },
 }));
@@ -83,7 +78,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
   const theme = useTheme();
-  const { navigateInPage, navigateToUrl } = useContext(GlobalContext);
+  const { navigateToUrl } = useContext(GlobalContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Check if we're on mobile
@@ -102,10 +97,10 @@ const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const handleMobileMenuItemClick = (url: string) => {
-    navigateInPage(url);
-    setMobileMenuOpen(false); // Close menu after navigation
-  };
+  // const handleMobileMenuItemClick = (url: string) => {
+  //   navigateInPage(url);
+  //   setMobileMenuOpen(false); // Close menu after navigation
+  // };
 
   const menueItems = () => {
     return (
@@ -115,7 +110,6 @@ const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
             key={item.label}
             onClick={() => handleNavigation(item)}
             disabled={false}
-            // isActive={item.isActive ?? false}
           >
             <Typography variant="h5">{item.label}</Typography>
           </StyledMenuItem>
@@ -132,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
             onClick={() => navigateToUrl("/")}
             sx={{
               marginRight: theme.spacing(1),
-              color: WHITE,
+              color: theme.palette.custom.white,
             }}
           >
             <ArrowBackIcon />
@@ -169,7 +163,10 @@ const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
       >
         <DrawerHeader>
           <Typography variant="h6"></Typography>
-          <IconButton onClick={handleMobileMenuToggle} sx={{ color: WHITE }}>
+          <IconButton
+            onClick={handleMobileMenuToggle}
+            sx={{ color: theme.palette.custom.white }}
+          >
             <CloseIcon />
           </IconButton>
         </DrawerHeader>

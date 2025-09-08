@@ -5,7 +5,6 @@ import { CssBaseline } from "@mui/material";
 import { BLACK, ORANGE, WHITE } from "./modules/CatInBox/utils/constants";
 import { LIGHT_BROWN, RED } from "./modules/Comedy/utils/constants";
 
-// Extend the custom palette to include all custom colors you use
 declare module "@mui/material/styles" {
   interface Theme {
     h1: string; // Single responsive value
@@ -24,7 +23,10 @@ declare module "@mui/material/styles" {
       orange: string;
       darkBrown: string;
       lightBrown: string;
+      white: string;
+      black: string;
       hoverColor: string;
+      red: string;
     };
   }
   interface PaletteOptions {
@@ -32,7 +34,10 @@ declare module "@mui/material/styles" {
       orange?: string;
       darkBrown?: string;
       lightBrown?: string;
+      white?: string;
+      black?: string;
       hoverColor?: string;
+      red?: string;
     };
   }
 }
@@ -63,7 +68,9 @@ const comedyTheme = createTheme({
     custom: {
       orange: RED,
       lightBrown: LIGHT_BROWN,
-      darkBrown: LIGHT_BROWN,
+      white: WHITE,
+      black: BLACK,
+      red: RED,
       hoverColor: LIGHT_BROWN,
     },
   },

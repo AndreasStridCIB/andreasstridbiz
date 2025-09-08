@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Typography, Button, styled } from "@mui/material";
-import { RED, WHITE, BLACK, LIGHT_BROWN } from "../../utils/constants";
+import { Box, Typography, Button, styled, useTheme } from "@mui/material";
+import { BLACK } from "../../utils/constants";
 
 interface ShowProps {
   month: string;
@@ -13,30 +13,30 @@ interface ShowProps {
   onBookNow?: () => void;
 }
 
-const ShowContainer = styled(Box)({
+const ShowContainer = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto 1fr auto", // date | details | button
   alignItems: "center",
   gap: "24px",
-  backgroundColor: RED,
-  border: `3px solid ${RED}`,
+  backgroundColor: theme.palette.custom.red,
+  border: `3px solid ${theme.palette.custom.red}`,
   borderRadius: "8px",
   padding: "16px",
   margin: "8px 0",
   minHeight: "80px",
   width: "100%",
-});
+}));
 
-const DateSection = styled(Box)({
+const DateSection = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateRows: "auto auto auto", // month | day | year
   justifyItems: "center",
   alignItems: "center",
   minWidth: "120px",
   textAlign: "center",
-  border: `4px solid ${LIGHT_BROWN}`,
+  border: `4px solid ${theme.palette.custom.white}`,
   padding: "8px 16px",
-});
+}));
 
 const ShowDetails = styled(Box)({
   display: "grid",
@@ -45,8 +45,8 @@ const ShowDetails = styled(Box)({
   gap: "4px",
 });
 
-const BookButton = styled(Button)({
-  backgroundColor: LIGHT_BROWN,
+const BookButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.custom.white,
   color: BLACK,
   fontWeight: "bold",
   fontSize: "1rem",
@@ -64,7 +64,7 @@ const BookButton = styled(Button)({
   "&:active": {
     transform: "scale(0.98)",
   },
-});
+}));
 
 const Show: React.FC<ShowProps> = ({
   month,
@@ -76,6 +76,7 @@ const Show: React.FC<ShowProps> = ({
   showType,
   onBookNow,
 }) => {
+  const theme = useTheme();
   const handleBookNow = () => {
     if (onBookNow) {
       onBookNow();
@@ -90,7 +91,7 @@ const Show: React.FC<ShowProps> = ({
         <Typography
           variant="body2"
           sx={{
-            color: WHITE,
+            color: theme.palette.custom.white,
             fontSize: "0.9rem",
             fontWeight: "bold",
             letterSpacing: "0.1em",
@@ -101,7 +102,7 @@ const Show: React.FC<ShowProps> = ({
         <Typography
           variant="h2"
           sx={{
-            color: LIGHT_BROWN,
+            color: theme.palette.custom.lightBrown,
             fontSize: "3rem",
             fontWeight: "bold",
             lineHeight: "1",
@@ -113,7 +114,7 @@ const Show: React.FC<ShowProps> = ({
         <Typography
           variant="body2"
           sx={{
-            color: WHITE,
+            color: theme.palette.custom.white,
             fontSize: "1rem",
             fontWeight: "bold",
           }}
@@ -126,7 +127,7 @@ const Show: React.FC<ShowProps> = ({
         <Typography
           variant="h4"
           sx={{
-            color: WHITE,
+            color: theme.palette.custom.white,
             fontSize: "1.5rem",
             fontWeight: "bold",
             letterSpacing: "0.05em",
@@ -138,7 +139,7 @@ const Show: React.FC<ShowProps> = ({
           <Typography
             variant="body1"
             sx={{
-              color: WHITE,
+              color: theme.palette.custom.white,
               fontSize: "1rem",
               opacity: 0.9,
             }}

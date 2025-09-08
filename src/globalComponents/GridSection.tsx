@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
+import { WHITE } from "../modules/Comedy/utils/constants";
 
 interface GridSectionProps {
   direction: "rows" | "columns";

@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import email from "../../assets/email-icon.svg";
 
 interface VideoBackgroundProps {
   youtubeId: string;
@@ -7,6 +6,7 @@ interface VideoBackgroundProps {
   style?: React.CSSProperties;
 }
 
+// NOT CURRENTLY USED
 const VideoBackground: React.FC<VideoBackgroundProps> = ({
   youtubeId,
   position = "right",

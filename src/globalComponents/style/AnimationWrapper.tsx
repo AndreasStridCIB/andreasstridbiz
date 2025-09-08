@@ -34,7 +34,7 @@ const StyledWrapper = styled(Box)<{
   },
 }));
 
-export const StyledMenuItem = styled(StyledWrapper)(({ theme }) => ({
+export const StyledMenuItem = styled(StyledWrapper)(() => ({
   height: NAVBAR_HEIGHT,
 }));
 

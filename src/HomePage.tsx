@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import CatInBoxLogoBlack from "@/assets/logos/CatInBox_Logo_Black.webp";
 import AndreasStridComedyLogo from "@/assets/logos/AndreasStridComedyLogo.png";
-import { GlobalContext } from "./GlobalContext";
 import { Box } from "@mui/material";
 import LazyImageWrap from "./globalComponents/lazyImage/LazyImage";
+import { GlobalContext } from "./utils/globalContextTemplate";
 
 // 100dvh instead of vh
 

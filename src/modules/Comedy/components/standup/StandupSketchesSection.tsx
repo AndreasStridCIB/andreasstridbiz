@@ -1,29 +1,12 @@
 import React, { useContext } from "react";
-import {
-  Box,
-  Grid,
-  hexToRgb,
-  styled,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import ProfileImg from "@/assets/photo/Profile.webp";
-import { LIGHT_BROWN, RED, WHITE } from "../../utils/constants";
-import LazyImageWrap from "../../../../globalComponents/lazyImage/LazyImageWrap";
-import PhotoSlider from "../../../../globalComponents/imageSlider/PhotoSlider";
+import { Box, styled, Typography, useTheme } from "@mui/material";
 import TitleAnimation from "../../../../globalComponents/TitleAnimation";
-
 import BulletPoint from "./BulletPoint";
-import { MenuItemWrap } from "../../../../style/MenuItemWrap";
 import TeaserComp from "./TeaserComp";
-
 import MicIcon from "@mui/icons-material/Mic";
 import TheatersIcon from "@mui/icons-material/Theaters";
-
 import SocialMediaTab from "./SocialMediaTab";
-
-import { GlobalContext } from "../../../../GlobalContext";
+import { GlobalContext } from "../../../../utils/globalContextTemplate";
 
 const standupPoints = [
   "Performing Internationaly 🌍",
@@ -45,7 +28,7 @@ const InfoBox = styled(Box)(({ theme }) => ({
   padding: theme.spacing(0, 8, 4, 8),
   display: "grid",
   justifyContent: "center",
-  backgroundColor: WHITE,
+  backgroundColor: theme.palette.custom.white,
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(2, 4),
   },
@@ -55,7 +38,7 @@ const StandupSectionDiv = styled(Box)(({ theme }) => ({
   display: "grid",
   // padding: theme.spacing(SMALL_PAD), MAYBE
   gridTemplateRows: "repeat(3, fit-content(100%))",
-  backgroundColor: RED,
+  backgroundColor: theme.palette.custom.red,
   height: "100%",
 
   zIndex: 2,
@@ -68,7 +51,7 @@ const ContentGrid = styled(Box)(({ theme }) => ({
   width: "100%",
 
   marginTop: "55%",
-  backgroundColor: RED,
+  backgroundColor: theme.palette.custom.red,
   zIndex: 2,
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
@@ -93,7 +76,7 @@ const StandupSketchesSection: React.FC = () => {
         <SocialMediaTab />
 
         <ContentChild id="middle">
-          <Box id="left" sx={{ backgroundColor: WHITE }}>
+          <Box id="left" sx={{ backgroundColor: theme.palette.custom.white }}>
             <TitleAnimation title="STANDUP" triggerY={isMobile ? 25 : 300} />
             <InfoBox id="standupTextMe">
               <Typography
@@ -120,13 +103,16 @@ const StandupSketchesSection: React.FC = () => {
           </Box>
         </ContentChild>
 
-        <ContentChild id="bottom" sx={{ backgroundColor: RED }}>
+        <ContentChild
+          id="bottom"
+          sx={{ backgroundColor: theme.palette.custom.red }}
+        >
           {!isMobile && (
             <Box id="left">
               <TeaserComp label="TEASER" videoUrl="5bYxH1fXgkY" />
             </Box>
           )}
-          <Box id="right" sx={{ backgroundColor: WHITE }}>
+          <Box id="right" sx={{ backgroundColor: theme.palette.custom.white }}>
             <TitleAnimation title="SKETCHES" triggerY={1300} />
             <InfoBox id="standupTextMe">
               <Typography
@@ -137,8 +123,8 @@ const StandupSketchesSection: React.FC = () => {
               >
                 As a Comedian Andreas also act! "Try to act..." in sketches. He
                 write, direct and edit himself. He loves to experiment with
-                different styles and genres such as short 10 second reaction
-                sketches. 2 minutes sketches with green screen and special
+                different styles and genres such as short 15 second reaction
+                sketches, up to 2 minutes sketches with green screen and special
                 effects.
               </Typography>
               {sketchesPoints.map((point, index) => (
