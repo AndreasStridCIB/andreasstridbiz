@@ -12,6 +12,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: "/andreasstridbiz/", //Repo name
   server: {
     host: "0.0.0.0", // Allow external connections
     port: 5173,

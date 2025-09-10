@@ -1,34 +1,83 @@
-# Andreas Strid's Businesses
+# Andreas Strid - Developer & Comedian
 
-Welcome to the official repository for Andreas Strid's businesses. This project provides information and resources related to the various ventures and enterprises managed by Andreas Strid.
+Welcome to the official portfolio repository for Andreas Strid. This project showcases two distinct creative ventures: **CatInBox AB** (Programming & Design) and **Andreas Strid Comedy** (Standup & Sketches).
 
-## Overview
+## 🎭 Overview
 
-Andreas Strid is an entrepreneur with a diverse portfolio of businesses. This repository aims to showcase his work, provide updates, and offer insights into his business strategies and achievements.
+Andreas Strid is a multi-talented creative professional who combines technical expertise with comedic artistry. This portfolio demonstrates his work across two main areas: software development/design and comedy performance.
 
-## Table of Contents
+## 🚀 Live Portfolio
 
-- [Introduction](#introduction)
+Visit the live portfolio at: **[Your Domain Here]**
+
+## 📋 Table of Contents
+
 - [Business Ventures](#business-ventures)
-- [Contact Information](#contact-information)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Local Development](#local-development)
+- [Deployment](#deployment)
+- [Contact](#contact)
 
-## Introduction
+## 🏢 Business Ventures
 
-Andreas Strid has been involved in multiple industries, leveraging his expertise to create successful businesses. This section provides a brief introduction to his background and entrepreneurial journey.
+### **CatInBox AB - Programming & Design**
 
-## Business Ventures
+Full-stack development and creative design services specializing in:
 
-Here are some of the key businesses managed by Andreas Strid:
+- **Web Development**: React, TypeScript, Node.js applications
+- **UI/UX Design**: Modern, responsive user interface design
+- **Brand Identity**: Logo design and visual branding
+- **Technical Consulting**: Software architecture and development strategy
 
-1. **Business Name 1**: Description of the business.
-2. **Business Name 2**: Description of the business.
-3. **Business Name 3**: Description of the business.
+### **Andreas Strid Comedy - Standup & Sketches**
 
-## Contact Information
+Professional comedy entertainment featuring:
 
-For more information or inquiries, please contact:
+- **Stand-up Comedy**: Live performances and comedy shows
+- **Comedy Sketches**: Written and performed original content
+- **Entertainment Services**: Corporate events and private shows
+- **Creative Writing**: Comedy content development
 
-- **Email**: [andreas@example.com](mailto:andreas@example.com)
-- **LinkedIn**: [Andreas Strid](https://www.linkedin.com/in/andreasstrid)
+## 🛠 Tech Stack
 
-Thank you for visiting the repository. Stay tuned for more updates and information about Andreas Strid's businesses.
+This portfolio is built with modern web technologies:
+
+- **Frontend**: React 19, TypeScript
+- **Styling**: Material-UI (MUI), Emotion
+- **Routing**: React Router DOM
+- **Build Tool**: Vite
+- **Deployment**: GitHub Pages
+- **Version Control**: Git & GitHub
+
+## ✨ Features
+
+- **🎨 Dual Theme System**: Switches between Programming (CatInBox) and Comedy themes
+- **📱 Responsive Design**: Optimized for all device sizes
+- **🖼️ Image Optimization**: Preloaded images with fade transitions
+- **⚡ Performance**: Lazy loading and code splitting
+- **🔄 Smooth Animations**: CSS transitions and hover effects
+- **🎭 Interactive UI**: Dynamic theme switching based on navigation
+
+## 💻 Local Development
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/andreasstridbiz.git
+cd andreasstridbiz
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open http://localhost:5173
+```

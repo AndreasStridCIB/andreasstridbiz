@@ -1,4 +1,16 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
 .DS_Store
-   
+Thumbs.db
