@@ -4,9 +4,9 @@ import {
   DELAY_INDEX,
   SLIDE_WIDTH,
 } from "../../modules/CatInBox/utils/constants";
-import { getImageName } from "../../utils/functions";
 import useDelay from "../../hooks/useDelay";
 import LazyImageWrap from "../lazyImage/LazyImage";
+import { getImageName } from "@/utils/globalFunctions";
 
 const sliding = () => keyframes`
    0% {

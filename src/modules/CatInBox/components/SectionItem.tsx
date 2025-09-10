@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { MenuItemWrap } from "../../../style/MenuItemWrap";
 import { Typography } from "@mui/material";
+import { StyledMenuItem } from "@/globalComponents/style/AnimationWrapper";
 
 interface SectionItemProps {
   title: string;
@@ -16,9 +16,13 @@ const SectionItem: React.FC<SectionItemProps> = ({
   const menuItemRef = useRef<HTMLDivElement>(null);
 
   return (
-    <MenuItemWrap onClick={handleClick} isActive={isActive} ref={menuItemRef}>
+    <StyledMenuItem
+      onClick={handleClick}
+      disabled={!isActive}
+      ref={menuItemRef}
+    >
       <Typography variant="h4">{title}</Typography>
-    </MenuItemWrap>
+    </StyledMenuItem>
   );
 };
 

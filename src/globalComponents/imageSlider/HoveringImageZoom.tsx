@@ -1,7 +1,7 @@
 import { Box, keyframes, styled } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { getImageName } from "../../utils/functions";
 import LazyImageWrap from "../lazyImage/LazyImage";
+import { getImageName } from "@/utils/globalFunctions";
 
 // fix
 // 1APA image that have not started yet should not show uptime.

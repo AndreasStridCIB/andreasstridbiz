@@ -36,7 +36,6 @@ const StyledLogoImage = styled(LazyImageWrap)(({ theme }) => ({
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: theme.body1,
   color: theme.palette.custom.lightBrown,
   paddingLeft: theme.spacing(4),
 
@@ -95,16 +94,16 @@ const Contact: React.FC = () => {
             gridTemplateRows: "repeat(4, fit-content(100%))",
           }}
         >
-          <StyledTypography sx={{ fontWeight: "bold" }}>
+          <StyledTypography variant="body1" sx={{ fontWeight: "bold" }}>
             Let's Connect!
           </StyledTypography>
-          <StyledTypography>
+          <StyledTypography variant="body1">
             Want to book me for an standup event/show?
           </StyledTypography>
-          <StyledTypography>
+          <StyledTypography variant="body1">
             Want to hire me to create a sketch for a commercial?
           </StyledTypography>
-          <StyledTypography>Send an email :)!</StyledTypography>
+          <StyledTypography variant="body1">Send an email :)!</StyledTypography>
 
           {/* This will render as vertical layout with text */}
           <SocialMediaTab isContactPage={true} />

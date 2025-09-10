@@ -2,8 +2,8 @@ import { Box, styled, Typography } from "@mui/material";
 import React from "react";
 import { DARK_BROWN } from "./utils/constants";
 import "../../fonts.css"; // Importing global fonts
-import AndreasSection from "./components/AndreasSection";
-import MediaSection from "./components/media/MediaSection";
+// import AndreasSection from "./components/AndreasSection";
+// import MediaSection from "./components/media/MediaSection";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import Navbar from "../../globalComponents/NavBar";
 
