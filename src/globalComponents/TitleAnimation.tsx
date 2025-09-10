@@ -33,10 +33,9 @@ const getAnimationKeyframes = (forward: boolean) => keyframes`
 `;
 
 const StyledTypography = styled(Typography)<{ shouldRender: boolean }>(
-  ({ theme, shouldRender }) => ({
+  ({ shouldRender }) => ({
     display: "flex",
     flexWrap: "wrap",
-    fontSize: theme.h1,
     fontWeight: 900,
     color: RED,
 
@@ -100,7 +99,7 @@ const TitleAnimation: React.FC<TitleAnimationProps> = ({
         },
       }}
     >
-      <StyledTypography shouldRender={shouldRender}>
+      <StyledTypography shouldRender={shouldRender} variant="h1">
         {title.split("").map((char, index) => (
           <span
             key={index}

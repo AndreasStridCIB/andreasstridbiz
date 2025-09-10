@@ -1,4 +1,4 @@
-import { styled, useTheme } from "@mui/material";
+import { styled } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import LazyImageWrap from "../lazyImage/LazyImageWrap";
 import { useDelayRender } from "../../hooks/useDelayRender";
@@ -23,10 +23,9 @@ const PhotoSliderContainer = styled("div")(({ theme }) => ({
 
 const PhotoSlider: React.FC<PhotoSliderProps> = ({ photos }) => {
   const [activeIndexes, setActiveIndexes] = useState([0, 1, 2]);
-  const [current, setCurrent] = useState(1); // middle image is visible
   const [animating, setAnimating] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const theme = useTheme();
+
   const shouldRender = useDelayRender(BASE_DELAY * 3);
 
   useEffect(() => {
@@ -49,7 +48,6 @@ const PhotoSlider: React.FC<PhotoSliderProps> = ({ photos }) => {
 
   useEffect(() => {
     setActiveIndexes([0, 1, 2]);
-    setCurrent(1);
   }, [photos]);
 
   if (!shouldRender) return null;

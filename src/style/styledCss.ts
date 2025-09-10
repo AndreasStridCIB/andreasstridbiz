@@ -2,36 +2,6 @@ import { css, keyframes } from "@mui/material/styles";
 
 export const SCALE_DURATION = "0.66s";
 
-// Keyframes for the border animation
-const borderAnimation = (
-  theme: any,
-  isClosing: boolean,
-  isActive: boolean
-) => keyframes`
-  0% {
-    width: ${isClosing ? "100%" : "0"};
-    right: 0;
-    background-color: ${
-      isActive
-        ? theme.palette.custom.hoverColor
-        : isClosing
-        ? theme.palette.custom.hoverColor
-        : theme.palette.secondary.main
-    };
-  }
-  100% {
-    width: ${isClosing ? "0" : "100%"};
-    background-color: ${
-      isActive
-        ? theme.palette.custom.hoverColor
-        : isClosing
-        ? theme.palette.secondary.main
-        : theme.palette.custom.hoverColor
-    };
-    right: 0;
-  }
-`;
-
 // Keyframes for the scale increase animation
 export const scaleAnimation = (isClosing: boolean) => keyframes`
   0% {

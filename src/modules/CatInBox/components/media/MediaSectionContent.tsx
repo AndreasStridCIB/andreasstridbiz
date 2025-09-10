@@ -1,11 +1,6 @@
 import React from "react";
-import { styled } from "@mui/material";
-import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import { ORANGE } from "../../utils/constants";
 import { MediaSectionPages } from "../../utils/types";
-
 import { GridContainer } from "../../../../style/GridContainer";
-import { getRotation } from "../../../../utils/functions";
 import ImageSlider from "../../../../globalComponents/imageSlider/ImageSlider";
 
 // Import all images from the assets/photo directory ``
@@ -16,16 +11,16 @@ const photos = import.meta.glob("/src/assets/photo/*.{png,jpg,jpeg,svg,webp}", {
 const photosPath = Object.values(photos).map((photo: any) => photo.default);
 
 // Remove?
-const StyledDoubleArrowIcon = styled(DoubleArrowIcon)<{ direction: string }>(
-  ({ direction }) => ({
-    color: ORANGE,
-    width: `min(96px, calc(50vw - 100px))`,
-    height: `min(96px, calc(50vw - 100px))`,
+// const StyledDoubleArrowIcon = styled(DoubleArrowIcon)<{ direction: string }>(
+//   ({ direction }) => ({
+//     color: ORANGE,
+//     width: `min(96px, calc(50vw - 100px))`,
+//     height: `min(96px, calc(50vw - 100px))`,
 
-    position: "relative",
-    transform: getRotation(direction),
-  })
-);
+//     position: "relative",
+//     transform: getRotation(direction),
+//   })
+// );
 
 interface DesignSectionContentProps {
   activeSection: MediaSectionPages;

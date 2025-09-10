@@ -6,7 +6,7 @@ const ICON_SIZE = 96;
 export const KeyBoardArrowIcon = styled(KeyboardArrowRightIcon)<{
   isOpen: boolean;
   direction: number;
-}>(({ theme, direction, isOpen }) => ({
+}>(({ direction, isOpen }) => ({
   transform: isOpen
     ? `rotate(${direction}deg)`
     : `rotate(${direction + 180}deg)`,

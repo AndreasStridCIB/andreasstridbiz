@@ -1,17 +1,10 @@
-import {
-  Box,
-  createTheme,
-  CssBaseline,
-  styled,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import React from "react";
-import { BLACK, DARK_BROWN, ORANGE, WHITE } from "./utils/constants";
+import { DARK_BROWN } from "./utils/constants";
 import "../../fonts.css"; // Importing global fonts
 import AndreasSection from "./components/AndreasSection";
-import DesignSection from "./components/design/DesignSection";
 import MediaSection from "./components/media/MediaSection";
+import EngineeringIcon from "@mui/icons-material/Engineering";
 import Navbar from "../../globalComponents/NavBar";
 
 // styled component extend div
@@ -32,8 +25,35 @@ const CatInBoxPageGrid = styled(Box)`
 const CatInBoxPage: React.FC = () => {
   return (
     <CatInBoxPageGrid>
-      <Navbar navBarItems={[]} logo={""} />
-      <AndreasSection />
+      <Navbar navBarItems={[]} />
+      <Box
+        sx={{
+          gridArea: "andreas",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 2,
+        }}
+      >
+        <EngineeringIcon
+          sx={{
+            fontSize: 120,
+            color: "white",
+          }}
+        />
+        <Typography
+          sx={{
+            color: "white",
+            fontFamily: "Montserrat, sans-serif",
+            fontWeight: 700,
+            fontSize: 48,
+            marginLeft: 2,
+          }}
+        >
+          Under Construction
+        </Typography>
+      </Box>
+      {/* <AndreasSection /> */}
       {/* <Typography
           sx={{
             gridArea: "designTitle",
@@ -46,7 +66,7 @@ const CatInBoxPage: React.FC = () => {
           Design
         </Typography>
         <DesignSection /> */}
-      <Typography
+      {/* <Typography
         sx={{
           gridArea: "mediaTitle",
           height: 200,
@@ -56,8 +76,8 @@ const CatInBoxPage: React.FC = () => {
         variant="h1"
       >
         Media
-      </Typography>
-      <MediaSection />
+      </Typography> */}
+      {/* <MediaSection /> */}
     </CatInBoxPageGrid>
   );
 };

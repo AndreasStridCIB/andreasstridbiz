@@ -11,7 +11,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
-import { RED } from "../../utils/constants";
+
 import {
   DURATION,
   StyledMenuItem,
@@ -29,7 +29,6 @@ interface SocialMediaTabProps {
 }
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: theme.body1,
   fontWeight: 900,
   color: theme.palette.custom.white,
 }));
@@ -129,7 +128,9 @@ const SocialMediaTab: React.FC<SocialMediaTabProps> = ({
       >
         <FacebookIcon />
         {isContactPage && (
-          <StyledTypography>@andreasstridcomedy</StyledTypography>
+          <StyledTypography variant="body1">
+            @andreasstridcomedy
+          </StyledTypography>
         )}
       </StyledIcon>
 
@@ -140,7 +141,9 @@ const SocialMediaTab: React.FC<SocialMediaTabProps> = ({
       >
         <InstagramIcon />
         {isContactPage && (
-          <StyledTypography>@andreasstridcomedy</StyledTypography>
+          <StyledTypography variant="body1">
+            @andreasstridcomedy
+          </StyledTypography>
         )}
       </StyledIcon>
 
@@ -151,7 +154,9 @@ const SocialMediaTab: React.FC<SocialMediaTabProps> = ({
       >
         <YouTubeIcon />
         {isContactPage && (
-          <StyledTypography>@andreasstridcomedy</StyledTypography>
+          <StyledTypography variant="body1">
+            @andreasstridcomedy
+          </StyledTypography>
         )}
       </StyledIcon>
 
@@ -170,7 +175,9 @@ const SocialMediaTab: React.FC<SocialMediaTabProps> = ({
         >
           <EmailIcon />
           {isContactPage && (
-            <StyledTypography>andreas.strid.comedy@gmail.com</StyledTypography>
+            <StyledTypography variant="body1">
+              andreas.strid.comedy@gmail.com
+            </StyledTypography>
           )}
         </StyledIcon>
       </Tooltip>

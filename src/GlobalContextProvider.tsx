@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import { GlobalContext } from "./utils/globalContextTemplate";
+
 interface GlobalProviderProps {
   children: ReactNode;
 }

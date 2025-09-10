@@ -6,18 +6,6 @@ import { BLACK, ORANGE, WHITE } from "./modules/CatInBox/utils/constants";
 import { LIGHT_BROWN, RED } from "./modules/Comedy/utils/constants";
 
 declare module "@mui/material/styles" {
-  interface Theme {
-    h1: string; // Single responsive value
-    h2: string;
-    body1: string;
-  }
-
-  interface ThemeOptions {
-    h1?: string;
-    h2?: string;
-    body1?: string;
-  }
-
   interface Palette {
     custom: {
       orange: string;
@@ -29,6 +17,7 @@ declare module "@mui/material/styles" {
       red: string;
     };
   }
+
   interface PaletteOptions {
     custom?: {
       orange?: string;
@@ -51,13 +40,15 @@ const catInBoxTheme = createTheme({
       orange: ORANGE,
       darkBrown: BLACK,
       lightBrown: WHITE,
+      white: WHITE,
+      black: BLACK,
+      red: RED,
       hoverColor: ORANGE,
     },
   },
-  typography: { fontFamily: '"Sarpanch", serif' },
-  h1: "clamp(3rem, 6vw + 1rem, 10rem)", // Scales from 48px to 160px
-  h2: "clamp(2rem, 4vw + 0.5rem, 8rem)", // Scales from 32px to 128px
-  body1: "clamp(1rem, 2vw + 0.5rem, 1.75rem)", // Scales from 16px to 28px
+  typography: {
+    fontFamily: '"Sarpanch", serif',
+  },
 });
 
 const comedyTheme = createTheme({
@@ -76,24 +67,23 @@ const comedyTheme = createTheme({
   },
   typography: {
     fontFamily: '"Avenir Black", sans-serif',
-    // Add font weight mappings
     h1: {
-      fontWeight: 900, // Extra bold
+      fontWeight: 900,
+      fontSize: "clamp(3rem, 6vw + 1rem, 10rem)", // Scales from 48px to 160px
     },
     h2: {
-      fontWeight: 800, // Bold
+      fontWeight: 800,
+      fontSize: "clamp(2rem, 6vw, 8rem)", // Scales from 32px to 128px
     },
     h3: {
       fontWeight: 700,
     },
     body1: {
-      fontWeight: 400, // Normal weight for body text
-      fontFamily: '"Avenir", "Helvetica Neue", Arial, sans-serif', // Use regular Avenir
+      fontSize: "clamp(1rem, 2vw, 1.75rem)", // Scales from 16px to 28px
+      fontWeight: 400,
+      fontFamily: '"Avenir", "Helvetica Neue", Arial, sans-serif',
     },
   },
-  h1: "clamp(3rem, 6vw + 1rem, 10rem)", // Scales from 48px to 160px
-  h2: "clamp(2rem, 6vw , 8rem)", // Scales from 32px to 128px
-  body1: "clamp(1rem, 2vw, 1.75rem)", // Scales from 16px to 28px
 });
 
 interface ThemeWrapperProps {

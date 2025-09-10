@@ -80,8 +80,8 @@ const StandupSketchesSection: React.FC = () => {
             <TitleAnimation title="STANDUP" triggerY={isMobile ? 25 : 300} />
             <InfoBox id="standupTextMe">
               <Typography
+                variant="body1"
                 sx={{
-                  fontSize: theme.body1,
                   paddingBottom: theme.spacing(4),
                 }}
               >
@@ -116,8 +116,8 @@ const StandupSketchesSection: React.FC = () => {
             <TitleAnimation title="SKETCHES" triggerY={1300} />
             <InfoBox id="standupTextMe">
               <Typography
+                variant="body1"
                 sx={{
-                  fontSize: theme.body1,
                   paddingBottom: theme.spacing(4),
                 }}
               >

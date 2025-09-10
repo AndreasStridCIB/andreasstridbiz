@@ -9,8 +9,8 @@ interface AnimationWrapperProps {
   disabled?: boolean;
 }
 
-export const DURATION = "0.66s";
-const HOVER_SCALE = 1.25;
+export const DURATION = "0.5s";
+const HOVER_SCALE = 1.1;
 
 const StyledWrapper = styled(Box)<{
   disabled: boolean;

@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./HomePage";
-import { lazy, Suspense } from "react";
-import { GlobalProvider } from "./GlobalContext";
-import ThemeWrapper from "./ThemeWrapper";
 
+import { lazy, Suspense } from "react";
+import ThemeWrapper from "./ThemeWrapper";
+import { GlobalProvider } from "./GlobalContextProvider";
+
+const HomePage = lazy(() => import("./HomePage"));
 const CatInBoxPage = lazy(() => import("./modules/CatInBox/CatInBoxPage"));
 const ComedyPage = lazy(() => import("./modules/Comedy/ComedyPage"));
 
@@ -13,11 +14,19 @@ function ThemedApp() {
     <ThemeWrapper>
       <GlobalProvider>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div>Loading CatInBox</div>}>
+                <HomePage />
+              </Suspense>
+            }
+          />
+
           <Route
             path="/catinbox"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Loading CatInBox</div>}>
                 <CatInBoxPage />
               </Suspense>
             }
@@ -25,7 +34,7 @@ function ThemedApp() {
           <Route
             path="/comedy"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Loading Comedy</div>}>
                 <ComedyPage />
               </Suspense>
             }

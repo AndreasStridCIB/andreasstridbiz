@@ -109,7 +109,7 @@ const ArrowContainer = styled(Box)({
 const StyledArrowImage = styled("img")<{
   isHovered: boolean;
   isRight: boolean;
-}>(({ theme, isHovered, isRight }) => ({
+}>(({ isHovered, isRight }) => ({
   marginTop: "150px",
   width: "clamp(128px, 20vw, 500px)", // Responsive width using clamp
   height: "clamp(96px, 15vw, 500px)", // Responsive height using clamp
@@ -157,10 +157,7 @@ const TeaserComp: React.FC<TeaserCompProps> = ({ label, videoUrl }) => {
           />
         </ArrowContainer>
 
-        <TeaserLabel
-          isHovered={isHovered}
-          sx={{ fontSize: theme.h2, fontWeight: 900 }}
-        >
+        <TeaserLabel isHovered={isHovered} variant="h2">
           {label}
         </TeaserLabel>
         <ArrowContainer>

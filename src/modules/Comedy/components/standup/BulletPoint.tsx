@@ -30,14 +30,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({ text, Icon }) => {
         }}
       />
 
-      <Typography
-        sx={{
-          fontSize: theme.body1,
-          fontWeight: 500, // Normal weight
-        }}
-      >
-        {text}
-      </Typography>
+      <Typography variant="body1">{text}</Typography>
     </Box>
   );
 };
