@@ -122,15 +122,19 @@ const Navbar: React.FC<NavbarProps> = ({ navBarItems }) => {
     <>
       <StyledAppBar id="navbar">
         <AnimationWrapper onClick={() => navigateToUrl("/")}>
-          <IconButton
-            onClick={() => navigateToUrl("/")}
+          <ArrowBackIcon
             sx={{
-              marginRight: theme.spacing(1),
-              color: theme.palette.custom.white,
+              height: "32px",
+              width: "32px",
+              marginRight: "8px",
+              [theme.breakpoints.down("md")]: {
+                height: "20px",
+                width: "20px",
+                marginLeft: "8px",
+              },
             }}
-          >
-            <ArrowBackIcon />
-          </IconButton>
+          />
+
           <Typography
             variant="h5"
             sx={{

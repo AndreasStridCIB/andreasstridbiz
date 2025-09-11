@@ -8,6 +8,9 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import SocialMediaTab from "./SocialMediaTab";
 import { GlobalContext } from "../../../../utils/globalContextTemplate";
 
+const STANDUP_TEASER = "Pm4MTbKIAus";
+const SKETCH_TRAILER = "T35NvAohyAw";
+
 const standupPoints = [
   "Performing Internationaly 🌍",
   "Standup both in English and Swedish 🇸🇪🇬🇧",
@@ -99,7 +102,7 @@ const StandupSketchesSection: React.FC = () => {
             </InfoBox>
           </Box>
           <Box id="right">
-            <TeaserComp label="TEASER" videoUrl="Pm4MTbKIAus" />
+            <TeaserComp label="TEASER" videoUrl={STANDUP_TEASER} />
           </Box>
         </ContentChild>
 
@@ -109,7 +112,7 @@ const StandupSketchesSection: React.FC = () => {
         >
           {!isMobile && (
             <Box id="left">
-              <TeaserComp label="TEASER" videoUrl="5bYxH1fXgkY" />
+              <TeaserComp label="TEASER" videoUrl={SKETCH_TRAILER} />
             </Box>
           )}
           <Box id="right" sx={{ backgroundColor: theme.palette.custom.white }}>
@@ -133,7 +136,7 @@ const StandupSketchesSection: React.FC = () => {
             </InfoBox>
             {isMobile && (
               <Box id="left">
-                <TeaserComp label="TEASER" videoUrl="5bYxH1fXgkY" />
+                <TeaserComp label="TEASER" videoUrl={SKETCH_TRAILER} />
               </Box>
             )}
           </Box>

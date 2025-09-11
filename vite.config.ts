@@ -12,10 +12,10 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/andreasstridbiz/", //Repo name
+  base: "/", //Repo name
   server: {
     host: "0.0.0.0", // Allow external connections
-    port: 5173,
+    port: 3000,
   },
   resolve: {
     alias: {

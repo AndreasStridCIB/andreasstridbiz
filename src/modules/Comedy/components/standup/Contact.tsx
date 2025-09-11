@@ -7,7 +7,7 @@ import LazyImageWrap from "../../../../globalComponents/lazyImage/LazyImage";
 import { GlobalContext } from "../../../../utils/globalContextTemplate";
 
 const ContactContent = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(4),
+  padding: theme.spacing(4, 8),
   backgroundColor: theme.palette.custom.red,
   display: "grid",
   gridTemplateColumns: "auto auto",
