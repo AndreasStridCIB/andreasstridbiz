@@ -8,7 +8,7 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import SocialMediaTab from "./SocialMediaTab";
 import { GlobalContext } from "../../../../utils/globalContextTemplate";
 
-const STANDUP_TEASER = "Pm4MTbKIAus";
+const STANDUP_TEASER = "E7x4vdfipkk";
 const SKETCH_TRAILER = "T35NvAohyAw";
 
 const standupPoints = [
