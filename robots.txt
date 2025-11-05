@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location (optional - you can add this later)
+# Sitemap: https://www.andreasstrid.com/sitemap.xml
